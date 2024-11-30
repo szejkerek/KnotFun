@@ -13,10 +13,31 @@ public class RopeManager : MonoBehaviour
     public float currentRopeLength;
     public float currentPullDistance;
 
+    public void SetRopeMaterial()
+    {
+        Material material = new Material(Shader.Find("Unlit/Color"));
+
+        Material materialA = playerA.GetMainMaterial();
+        Material materialB = playerB.GetMainMaterial();
+
+        RopeMesh ropeMesh = GetComponent<RopeMesh>();
+        
+        ropeMesh.material = material;
+        ropeMesh.Refresh();
+    }
+    
     private void Start()
     {
         rope = GetComponent<Rope>();
         rope.Init();
+        playerA.PlayerAttackManager.OnChargeChanged += TryUpdateRope;
+        playerB.PlayerAttackManager.OnChargeChanged += TryUpdateRope;
+        SetRopeMaterial();
+        TryUpdateRope();
+    }
+
+    private void TryUpdateRope()
+    {
         ChangeRopeLenght(playerA.PlayerAttackManager.currentCharge, playerB.PlayerAttackManager.currentCharge);
     }
 

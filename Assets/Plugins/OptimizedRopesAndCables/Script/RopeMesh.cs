@@ -28,6 +28,23 @@ namespace GogoGaga.OptimizedRopesAndCables
         private List<int> triangles = new List<int>();
         private List<Vector2> uvs = new List<Vector2>();
 
+        public void Refresh()
+        {
+            InitializeComponents();
+            if (rope.IsPrefab)
+                return;
+            
+            SubscribeToRopeEvents();
+            if (meshRenderer && material)
+            {
+                meshRenderer.material = material;
+            }
+            // We are using delay call to generate mesh to avoid errors in the editor
+#if UNITY_EDITOR
+            EditorApplication.delayCall += DelayedGenerateMesh;
+#endif
+        }
+        
         private void OnValidate()
         {
             InitializeComponents();
