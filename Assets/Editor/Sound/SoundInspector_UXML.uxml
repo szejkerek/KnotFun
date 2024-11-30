@@ -1,0 +1,23 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Systems/Audio/Editor/SoundInspector_USS.uss?fileID=7433441132597879392&amp;guid=abb3d02b01b911f4aa92c87bbf7562a2&amp;type=3#SoundInspector_USS" />
+    <ui:VisualElement name="NormalSettings" style="flex-grow: 1;">
+        <ui:Label text="Settings" name="settingsLabel" tooltip="General settings of the sound." class="section-label" />
+        <uie:PropertyField binding-path="clip" focusable="false" label="Sound Clip" name="clip" tooltip="Audio clip to be played." />
+        <ui:EnumField label="Type of Sound" value="Center" type="PlaceHolders.Audio.SoundType, Systems" binding-path="soundType" name="soundType" include-obsolete-values="false" view-data-key="soundTypeEnum" tooltip="Choose whether the sound is an SFX or Music." class="fix-input-spacing" />
+        <uie:PropertyField binding-path="volume" name="volume" label="Sound Volume" tooltip="Set the volume of the sound clip." />
+        <uie:PropertyField name="pitch" binding-path="pitch" label="Sound Pitch" tooltip="Set the pitch range of the sound clip. The clip will play with pitch set to a random value in a given range." />
+        <uie:PropertyField name="loop" binding-path="loop" label="Loop the Sound" tooltip="It this option is chcecked the clip will be playing in the loop forever." />
+    </ui:VisualElement>
+    <ui:VisualElement name="Settings3D" enabled="true" style="flex-grow: 1;">
+        <ui:Label text="Settings 3D" name="settings3DLabel" tooltip="Settings describing the 3D parameters of a given sound." class="section-label" />
+        <ui:Toggle label="Spatial Blend" name="spatialBlend" value="false" enabled="true" binding-path="&lt;Settings3D&gt;k__BackingField.spatialBlend" tooltip="Enable 3D sound. Sets how much this AudioSource is treated as a 3D source. 3D sources are affected by spatial position and spread. If 3D Pan Level is FALSE, all spatial attenuation is ignored." class="fix-input-spacing" />
+        <ui:VisualElement name="toggleContainer" style="flex-grow: 1;">
+            <uie:PropertyField name="dopplerLevel" binding-path="&lt;Settings3D&gt;k__BackingField.dopplerLevel" label="Doppler Level" tooltip="Specifies how much the pitch is changed based on the relative velocity between AudioListener and AudioSource." />
+            <uie:PropertyField name="spread" binding-path="&lt;Settings3D&gt;k__BackingField.spread" label="Spread" tooltip="Sets the spread of a 3D sound in speaker space." />
+            <uie:PropertyField label="Min Distance" name="minDistance" binding-path="&lt;Settings3D&gt;k__BackingField.minDistance" tooltip="Minimal distance." />
+            <uie:PropertyField label="Max Distance" name="maxDistance" binding-path="&lt;Settings3D&gt;k__BackingField.maxDistance" tooltip="Maximal distance." />
+            <ui:EnumField label="Volume Rolloff" value="Center" type="UnityEngine.AudioRolloffMode, UnityEngine.AudioModule" name="rolloffMode" include-obsolete-values="false" view-data-key="volumeRolloffEnum" tooltip="Which type of rolloff curve to use." binding-path="&lt;Settings3D&gt;k__BackingField.rolloffMode" class="fix-input-spacing" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Button text="Preview" name="soundPreview" class="button-show" />
+</ui:UXML>
