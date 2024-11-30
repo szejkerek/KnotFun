@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyWeaponBase : MonoBehaviour
+public abstract class EnemyWeaponBase : MonoBehaviour
 {
     private EnemyConfig _config;
     public Transform attackPoint;
@@ -9,13 +9,6 @@ public class EnemyWeaponBase : MonoBehaviour
     {
         _config = config;
     }
-    public bool CanUseWeapon(GameObject target)
-    {
-        return true;
-    }
-
-    public void UseWeapon()
-    {
-        Debug.Log("Weapon used!");
-    }
+    public abstract bool CanUseWeapon(GameObject target);
+    public abstract void UseWeapon();
 }
