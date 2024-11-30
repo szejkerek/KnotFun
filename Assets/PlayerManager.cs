@@ -22,14 +22,37 @@ public class PlayerManager : MonoBehaviour
     public float pullSpeed = 2f; 
     public float ropeLenghtTangled = 5f;
     public float ropeLenghtLoose = 10f;
-    public float springStrength = 5f; 
+    public float springStrength = 5f;
+
+    public Vector3 GetMiddlePoint()
+    {
+        Vector3 position1 = player1.transform.position;
+        Vector3 position2 = player2.transform.position;
+        Vector3 position3 = player3.transform.position;
+
+        return (position1 + position2 + position3) / 3;
+    }
+
+    public float GetAvgDistance()
+    {
+        Vector3 position1 = player1.transform.position;
+        Vector3 position2 = player2.transform.position;
+        Vector3 position3 = player3.transform.position;
+
+        float distance12 = Vector3.Distance(position1, position2);
+        float distance23 = Vector3.Distance(position2, position3);
+        float distance31 = Vector3.Distance(position3, position1);
+
+        return (distance12 + distance23 + distance31) / 3;
+    }
+
+    
     void Update()
     {
         HandlePlayerMovement(player1, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
         HandlePlayerMovement(player2, KeyCode.T, KeyCode.G, KeyCode.F, KeyCode.H);
         HandlePlayerMovement(player3, KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L);
-
-        // Enforce distances with conditions
+        
         EnforceMaxDistance(player1, player2, connectionType12.Last());
         EnforceMaxDistance(player2, player3, connectionType23.Last());
         EnforceMaxDistance(player3, player1, connectionType31.Last());
@@ -37,13 +60,6 @@ public class PlayerManager : MonoBehaviour
         player1.Move();
         player2.Move();
         player3.Move();
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rope12.ropeLength = 20f;
-            rope12.RecalculateRope();
-        }
     }
 
     void HandlePlayerMovement(Player player, KeyCode up, KeyCode down, KeyCode left, KeyCode right)

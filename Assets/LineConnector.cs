@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LineConnectorMover : MonoBehaviour
+public class LineConnector : MonoBehaviour
 {
     public float hight; // The height of the orbit
     public Transform Target; // The target to face
@@ -8,31 +8,20 @@ public class LineConnectorMover : MonoBehaviour
 
     void Update()
     {
-        // Ensure this object has a parent to act as the center
         if (transform.parent != null && Target != null)
         {
-            // Get the parent's position as the center of the orbit
             Vector3 center = transform.parent.position;
-
-            // Calculate the direction from the center to the target
             Vector3 directionToTarget = Target.position - center;
-
-            // Flatten the direction to the XZ plane
+            
             directionToTarget.y = 0;
-
-            // Normalize the direction
+            
             directionToTarget.Normalize();
-
-            // Calculate the closest point on the orbit
+            
             Vector3 closestPoint = center + directionToTarget * radius;
-
-            // Set the height of the closest point
+            
             closestPoint.y = center.y + hight;
-
-            // Update the position of the ConnectorPoint
             transform.position = closestPoint;
-
-            // Make the ConnectorPoint face the target
+            
             transform.LookAt(Target.position);
         }
     }
