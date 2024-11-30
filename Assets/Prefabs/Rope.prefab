@@ -163,10 +163,10 @@ MonoBehaviour:
   startPoint: {fileID: 0}
   midPoint: {fileID: 7740950390204514039}
   endPoint: {fileID: 0}
-  linePoints: 39
+  linePoints: 28
   stiffness: 350
   damping: 15
-  ropeLength: 9.98
+  ropeLength: 1.5
   ropeWidth: 0.1
   midPointWeight: 1
   midPointPosition: 0.5

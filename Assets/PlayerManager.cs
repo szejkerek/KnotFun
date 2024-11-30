@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GogoGaga.OptimizedRopesAndCables;
@@ -7,13 +8,13 @@ using UnityEngine.Serialization;
 public class PlayerManager : MonoBehaviour
 {
     public Player player1;
-    public Rope rope12;
+    public RopeManager rope12;
     public List<ConnectionType> connectionType12 = new List<ConnectionType>();
     public Player player2;
-    public Rope rope23;
+    public RopeManager rope23;
     public List<ConnectionType> connectionType23 = new List<ConnectionType>();
     public Player player3;
-    public Rope rope31;
+    public RopeManager rope31;
     public List<ConnectionType> connectionType31 = new List<ConnectionType>();
     
     [Header("Player config")]
@@ -23,6 +24,11 @@ public class PlayerManager : MonoBehaviour
     public float ropeLenghtTangled = 5f;
     public float ropeLenghtLoose = 10f;
     public float springStrength = 5f;
+
+    private void Awake()
+    {
+
+    }
 
     public Vector3 GetMiddlePoint()
     {
