@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     public float pullSpeed = 2f; 
     public float ropeLenghtTangled = 5f;
     public float ropeLenghtLoose = 10f;
-    public float hardLimitAddition = 1f;
+    public float springStrength = 5f; 
     void Update()
     {
         HandlePlayerMovement(player1, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
@@ -37,6 +37,13 @@ public class PlayerManager : MonoBehaviour
         player1.Move();
         player2.Move();
         player3.Move();
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rope12.ropeLength = 20f;
+            rope12.RecalculateRope();
+        }
     }
 
     void HandlePlayerMovement(Player player, KeyCode up, KeyCode down, KeyCode left, KeyCode right)
@@ -57,18 +64,14 @@ public class PlayerManager : MonoBehaviour
 
         if (distance > maxDistance)
         {
-            // Spring behavior
             Vector3 direction = (playerA.transform.position - playerB.transform.position).normalized;
             float excessDistance = distance - maxDistance;
 
-            // Apply spring-like force
-            float springStrength = 5f; // Adjust for desired springiness
             Vector3 springForce = direction * (excessDistance * springStrength) * Time.deltaTime;
 
             playerA.currentDirection -= springForce;
             playerB.currentDirection += springForce;
-
-            // Clamp positions to enforce max distance
+            
             Vector3 midpoint = (playerA.transform.position + playerB.transform.position) / 2;
             Vector3 clampedOffset = direction * (maxDistance / 2);
 

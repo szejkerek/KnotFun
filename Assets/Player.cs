@@ -1,9 +1,12 @@
+using GogoGaga.OptimizedRopesAndCables;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public Vector3 currentDirection { get; set; }
     private CharacterController characterController;
+
+    public Rope PlayerRope;
 
     private void Awake()
     {
