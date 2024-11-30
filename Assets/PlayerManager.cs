@@ -1,19 +1,28 @@
 using System.Collections.Generic;
 using System.Linq;
+using GogoGaga.OptimizedRopesAndCables;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerManager : MonoBehaviour
 {
     public Player player1;
+    public Rope rope12;
     public List<ConnectionType> connectionType12 = new List<ConnectionType>();
     public Player player2;
+    public Rope rope23;
     public List<ConnectionType> connectionType23 = new List<ConnectionType>();
     public Player player3;
+    public Rope rope31;
     public List<ConnectionType> connectionType31 = new List<ConnectionType>();
-
-    public float speed = 5f; // Speed of player movement
-    public float pullSpeed = 2f; // Speed of enforcing maximum distance
-
+    
+    [Header("Player config")]
+    public float speed = 5f;
+    [Header("Rope config")]
+    public float pullSpeed = 2f; 
+    public float ropeLenghtTangled = 5f;
+    public float ropeLenghtLoose = 10f;
+    public float hardLimitAddition = 1f;
     void Update()
     {
         HandlePlayerMovement(player1, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
@@ -24,43 +33,49 @@ public class PlayerManager : MonoBehaviour
         EnforceMaxDistance(player1, player2, connectionType12.Last());
         EnforceMaxDistance(player2, player3, connectionType23.Last());
         EnforceMaxDistance(player3, player1, connectionType31.Last());
+        
+        player1.Move();
+        player2.Move();
+        player3.Move();
     }
 
     void HandlePlayerMovement(Player player, KeyCode up, KeyCode down, KeyCode left, KeyCode right)
     {
-        Vector3 moveDirection = Vector3.zero;
-
-        if (Input.GetKey(up)) moveDirection += Vector3.forward;
-        if (Input.GetKey(down)) moveDirection += Vector3.back;
-        if (Input.GetKey(left)) moveDirection += Vector3.left;
-        if (Input.GetKey(right)) moveDirection += Vector3.right;
-
-        player.transform.position += moveDirection * speed * Time.deltaTime;
+        player.currentDirection = player.GetMovementDirection(up,down,left,right).normalized * speed * Time.deltaTime;
     }
 
     void EnforceMaxDistance(Player playerA, Player playerB, ConnectionType connection)
     {
-        float maxDistance = connection != ConnectionType.Loose ? 5f : 10f;
+        float maxDistance = connection switch
+        {
+            ConnectionType.Loose => ropeLenghtLoose,
+            ConnectionType.None => float.MaxValue,
+            _ => ropeLenghtTangled
+        };
+
         float distance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
 
         if (distance > maxDistance)
         {
+            // Spring behavior
             Vector3 direction = (playerA.transform.position - playerB.transform.position).normalized;
             float excessDistance = distance - maxDistance;
-            
-            Vector3 adjustment = direction * excessDistance * 0.5f; 
-            playerA.transform.position -= adjustment * pullSpeed * Time.deltaTime;
-            playerB.transform.position += adjustment * pullSpeed * Time.deltaTime;
+
+            // Apply spring-like force
+            float springStrength = 5f; // Adjust for desired springiness
+            Vector3 springForce = direction * (excessDistance * springStrength) * Time.deltaTime;
+
+            playerA.currentDirection -= springForce;
+            playerB.currentDirection += springForce;
+
+            // Clamp positions to enforce max distance
+            Vector3 midpoint = (playerA.transform.position + playerB.transform.position) / 2;
+            Vector3 clampedOffset = direction * (maxDistance / 2);
+
+            playerA.transform.position = midpoint + clampedOffset;
+            playerB.transform.position = midpoint - clampedOffset;
         }
     }
-}
 
 
-public enum ConnectionType
-{
-    God,
-    Red,
-    Green,
-    Blue,
-    Loose
 }
