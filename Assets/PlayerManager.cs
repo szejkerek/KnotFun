@@ -54,9 +54,9 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
-        HandlePlayerMovement(player1, KeyCode.W, KeyCode.S, KeyCode.A, KeyCode.D);
-        HandlePlayerMovement(player2, KeyCode.T, KeyCode.G, KeyCode.F, KeyCode.H);
-        HandlePlayerMovement(player3, KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L);
+        HandlePlayerMovement(player1);
+        HandlePlayerMovement(player2);
+        HandlePlayerMovement(player3);
         
         EnforceMaxDistance(player1, player2, rope12);
         EnforceMaxDistance(player2, player3, rope23);
@@ -67,9 +67,9 @@ public class PlayerManager : MonoBehaviour
         player3.Move();
     }
 
-    void HandlePlayerMovement(Player player, KeyCode up, KeyCode down, KeyCode left, KeyCode right)
+    void HandlePlayerMovement(Player player)
     {
-        player.currentDirection = player.GetMovementDirection(up,down,left,right).normalized * speed * Time.deltaTime;
+        player.currentDirection = player.GetMovementDirection().normalized * speed * Time.deltaTime;
     }
 
     void EnforceMaxDistance(Player playerA, Player playerB, RopeManager rope)

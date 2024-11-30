@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         characterController.Move(currentDirection);
     }
 
-    public Vector3 GetMovementDirection(KeyCode up, KeyCode down, KeyCode left, KeyCode right)
+    public Vector3 GetMovementDirection()
     {
         if (debugNoPads)
         {
@@ -91,10 +91,10 @@ public class Player : MonoBehaviour
             case GameDevice.Keyboard:
             {
                 Vector3 moveDirection = Vector3.zero;
-                if (Input.GetKey(up)) moveDirection += Vector3.forward;
-                if (Input.GetKey(down)) moveDirection += Vector3.back;
-                if (Input.GetKey(left)) moveDirection += Vector3.left;
-                if (Input.GetKey(right)) moveDirection += Vector3.right;
+                if (Input.GetKey(KeyCode.W)) moveDirection += Vector3.forward;
+                if (Input.GetKey(KeyCode.S)) moveDirection += Vector3.back;
+                if (Input.GetKey(KeyCode.A)) moveDirection += Vector3.left;
+                if (Input.GetKey(KeyCode.D)) moveDirection += Vector3.right;
 
                 return moveDirection;
             }
