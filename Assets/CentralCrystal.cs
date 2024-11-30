@@ -10,11 +10,11 @@ public class CentralCrystal : MonoBehaviour
 
     public float r = 0, g = 0, b = 0;
 
-    Material crystalMaterial;
+    public Material crystalMaterial;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         initialPosition = transform.position;  
         crystalMaterial = GetComponent<MeshRenderer>().material;
