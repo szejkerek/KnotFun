@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -5,11 +6,15 @@ using UnityEngine.InputSystem.Utilities;
 
 public class Player : MonoBehaviour
 {
+
+    public Material pad1Mat;
+    public Material pad2Mat;
+    public Material keyboard;
     public bool debugNoPads = true;
     public Vector3 currentDirection { get; set; }
     private CharacterController characterController;
     public PlayerAttackManager PlayerAttackManager {get; private set;}
-    public GameDevice gameDevice = GameDevice.NotSet;
+    public GameDevice gameDevice;
     
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
 
@@ -64,7 +69,6 @@ public class Player : MonoBehaviour
                     return moveDirection;
 
                 }
-                case GameDevice.NotSet:
                 default:
                     Debug.Log("GameDevice not set");
                     return Vector3.zero;
@@ -98,10 +102,41 @@ public class Player : MonoBehaviour
 
                 return moveDirection;
             }
-            case GameDevice.NotSet:
             default:
                 Debug.Log("GameDevice not set");
                 return Vector3.zero;
         }
+        
+        
+    }
+
+    public Material GetMainMaterial()
+    {
+        switch (gameDevice)
+        {
+            case GameDevice.Pad1:
+                return pad1Mat;
+            case GameDevice.Pad2:
+                return pad2Mat;
+            case GameDevice.Keyboard:
+                return keyboard;
+        }
+        
+        return null;
+    }
+
+    public bool TriggerHeld(GameDevice device)
+    {
+        switch (gameDevice)
+        {
+            case GameDevice.Pad1:
+                break;
+            case GameDevice.Pad2:
+                break;
+            case GameDevice.Keyboard:
+                break;
+        }
+        
+        return Input.GetKeyDown(KeyCode.Space);
     }
 }

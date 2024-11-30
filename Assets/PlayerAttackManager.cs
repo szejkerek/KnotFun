@@ -3,28 +3,34 @@ using UnityEngine;
 
 public class PlayerAttackManager : MonoBehaviour
 {
+    private Player player;
+    
     public Action OnChargeChanged;
-    public int id;
     [Range(0f,1f)] public float currentCharge;
+
+    private void Awake()
+    {
+        player = GetComponent<Player>();
+    }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.B) && id == 1)
+        if (player.gameDevice == GameDevice.Keyboard && 
+            player.TriggerHeld(GameDevice.Keyboard))
         {
-            TryDischarge(0.1f*Time.deltaTime);
-            Debug.Log("B");
+            TryDischarge(5f*Time.deltaTime);
         }
         
-        if (Input.GetKey(KeyCode.N) && id == 2)
+        if (player.gameDevice == GameDevice.Pad1 && 
+            player.TriggerHeld(GameDevice.Pad1))
         {
-            TryDischarge(0.1f*Time.deltaTime);
-            Debug.Log("N");
+            TryDischarge(5f*Time.deltaTime);
         }
         
-        if (Input.GetKey(KeyCode.M) && id == 3)
+        if (player.gameDevice == GameDevice.Pad2 && 
+            player.TriggerHeld(GameDevice.Pad2))
         {
-            TryDischarge(0.1f*Time.deltaTime);
-            Debug.Log("M");
+            TryDischarge(5f*Time.deltaTime);
         }
     }
 
@@ -34,7 +40,7 @@ public class PlayerAttackManager : MonoBehaviour
         {
             return false;
         }
-        ChangeCharge(value);
+        ChangeCharge(-value);
         return true;
     }
 
