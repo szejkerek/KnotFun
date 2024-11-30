@@ -3,17 +3,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    EnemyConfig enemyConfig;
-    EnemyStateMachineBase stateMachine;
+    public bool isStationary = false;
+    public EnemyConfig enemyConfig;
+    public EnemyStateMachine stateMachine;
     
-
     private void Start()
     {
-        stateMachine.Init(new IdleState(stateMachine));
-    }
-
-    private void Update()
-    {
-        // State machine will automatically update
+        stateMachine.ChangeState(new AttackState(stateMachine, isStationary));
     }
 }
