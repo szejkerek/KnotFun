@@ -13,25 +13,13 @@ public class RopeManager : MonoBehaviour
 
     [SerializeField] private float interpolationDuration = 0.2f;
 
-    private void Awake()
+    private void Start()
     {
         rope = GetComponent<Rope>();
-        ChangeRopeLenght(0.5f);
+        rope.Init();
+        ChangeRopeLenght(0f);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F1))
-        {
-            ChangeRopeLenght(0f);
-            Debug.Log("0");
-        }
-        else if (Input.GetKeyDown(KeyCode.F2))
-        {
-             ChangeRopeLenght(1);
-             Debug.Log("1");
-        }
-    }
 
     public void ChangeRopeLenght(float t)
     {

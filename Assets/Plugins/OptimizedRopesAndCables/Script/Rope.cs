@@ -74,7 +74,18 @@ namespace GogoGaga.OptimizedRopesAndCables
         
         
         public bool IsPrefab => gameObject.scene.rootCount == 0;
-        
+
+        public void Init()
+        {
+            InitializeLineRenderer();
+            if (AreEndPointsValid())
+            {
+                currentValue = GetMidPoint();
+                targetValue = currentValue;
+                currentVelocity = Vector3.zero;
+                SetSplinePoint(); // Ensure initial spline point is set correctly
+            }
+        }
         private void Start()
         {
             InitializeLineRenderer();
@@ -104,7 +115,7 @@ namespace GogoGaga.OptimizedRopesAndCables
             }
         }
 
-        private void InitializeLineRenderer()
+        public void InitializeLineRenderer()
         {
             if (!lineRenderer)
             {
