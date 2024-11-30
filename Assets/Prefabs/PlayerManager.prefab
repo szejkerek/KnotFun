@@ -49,9 +49,9 @@ MonoBehaviour:
   player1: {fileID: 2338458418868587355}
   rope12: {fileID: 5749238078113884899}
   player2: {fileID: 3333987814144204260}
-  rope23: {fileID: 985259235494855587}
+  rope23: {fileID: 2049028107313093217}
   player3: {fileID: 6651794995325921090}
-  rope31: {fileID: 6185270097119296099}
+  rope31: {fileID: 4578262504621362178}
   speed: 8.57
   pullSpeed: 2
   ropeLenghtTangled: 5
@@ -224,6 +224,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 544631912382065888}
     m_Modifications:
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerA
+      value: 
+      objectReference: {fileID: 3333987814144204260}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerB
+      value: 
+      objectReference: {fileID: 6651794995325921090}
     - target: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Name
       value: Rope23
@@ -784,36 +792,21 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 985259235494855587}
     - targetCorrespondingSourceObject: {fileID: 7903243671732984224, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8303506093046572310}
   m_SourcePrefab: {fileID: 100100000, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
---- !u!1 &1687964546015128622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+--- !u!114 &2049028107313093217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
   m_PrefabInstance: {fileID: 1144197993596212593}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &985259235494855587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1687964546015128622}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeLoop: {fileID: 7083304854025391313}
-  ropeRenderLength: {x: 2, y: 3.5}
-  ropePullDistance: {x: 5, y: 15}
-  currentRopeLength: 0
-  currentPullDistance: 0
-  interpolationDuration: 0.2
 --- !u!4 &2795432862603718219 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2966285988151098170, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
@@ -935,6 +928,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 544631912382065888}
     m_Modifications:
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerA
+      value: 
+      objectReference: {fileID: 6651794995325921090}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerB
+      value: 
+      objectReference: {fileID: 2338458418868587355}
     - target: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Name
       value: Rope31
@@ -1491,9 +1492,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6185270097119296099}
     - targetCorrespondingSourceObject: {fileID: 7903243671732984224, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5649010786229264430}
@@ -1503,29 +1501,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2966285988151098170, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
   m_PrefabInstance: {fileID: 3172749977906971410}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3785846714870348365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+--- !u!114 &4578262504621362178 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
   m_PrefabInstance: {fileID: 3172749977906971410}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6185270097119296099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3785846714870348365}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeLoop: {fileID: 4731639938992937650}
-  ropeRenderLength: {x: 2, y: 3.5}
-  ropePullDistance: {x: 5, y: 15}
-  currentRopeLength: 0
-  currentPullDistance: 0
-  interpolationDuration: 0.2
 --- !u!1 &4731639938992937650 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7903243671732984224, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
@@ -1551,6 +1537,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 544631912382065888}
     m_Modifications:
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerA
+      value: 
+      objectReference: {fileID: 2338458418868587355}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: playerB
+      value: 
+      objectReference: {fileID: 3333987814144204260}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: ropePullDistance.x
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: ropeRenderLength.y
+      value: 4.24
+      objectReference: {fileID: 0}
     - target: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Name
       value: Rope12
@@ -2111,9 +2113,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5749238078113884899}
     - targetCorrespondingSourceObject: {fileID: 7903243671732984224, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4136450722949611227}
@@ -2135,29 +2134,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4b7380dd0a1e444820281cd9f2ef2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4956813272121597100 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+--- !u!114 &5749238078113884899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
   m_PrefabInstance: {fileID: 6649560058660447731}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5749238078113884899
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4956813272121597100}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeLoop: {fileID: 3596702213724666963}
-  ropeRenderLength: {x: 2, y: 3.5}
-  ropePullDistance: {x: 5, y: 15}
-  currentRopeLength: 0
-  currentPullDistance: 0
-  interpolationDuration: 0.2
 --- !u!4 &8461602651092688585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2966285988151098170, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}

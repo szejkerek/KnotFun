@@ -8,7 +8,5 @@ public class RopeLoop : MonoBehaviour
         if (other.gameObject.tag != "EnemyBullet")
             return;
         
-        Destroy(other.gameObject);
-        
     }
 }

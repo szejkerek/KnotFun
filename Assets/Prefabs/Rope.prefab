@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2966285988151098170}
   - component: {fileID: 5864043483073392025}
   - component: {fileID: 2997263425317845319}
+  - component: {fileID: 1409237689356799760}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -170,6 +171,25 @@ MonoBehaviour:
   ropeWidth: 0.1
   midPointWeight: 1
   midPointPosition: 0.5
+--- !u!114 &1409237689356799760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769308603198159199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ropeLoop: {fileID: 7903243671732984224}
+  playerA: {fileID: 0}
+  playerB: {fileID: 0}
+  ropeRenderLength: {x: 2, y: 3.5}
+  ropePullDistance: {x: 3.27, y: 15}
+  currentRopeLength: 0
+  currentPullDistance: 0
 --- !u!1001 &3713744440399515375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -230,5 +250,10 @@ PrefabInstance:
 --- !u!4 &7740950390204514039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6405455374347399192, guid: 542695998bc22ae49b0dcff30996429f, type: 3}
+  m_PrefabInstance: {fileID: 3713744440399515375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7903243671732984224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6783591861507839823, guid: 542695998bc22ae49b0dcff30996429f, type: 3}
   m_PrefabInstance: {fileID: 3713744440399515375}
   m_PrefabAsset: {fileID: 0}

@@ -5,12 +5,14 @@ public class Player : MonoBehaviour
 {
     public Vector3 currentDirection { get; set; }
     private CharacterController characterController;
+    public PlayerAttackManager PlayerAttackManager {get; private set;}
 
     public Rope PlayerRope;
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        PlayerAttackManager = GetComponent<PlayerAttackManager>();
     }
 
     public void Move()
