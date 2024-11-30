@@ -9,13 +9,12 @@ public class PlayerManager : MonoBehaviour
 {
     public Player player1;
     public RopeManager rope12;
-    public List<ConnectionType> connectionType12 = new List<ConnectionType>();
+    
     public Player player2;
     public RopeManager rope23;
-    public List<ConnectionType> connectionType23 = new List<ConnectionType>();
+    
     public Player player3;
     public RopeManager rope31;
-    public List<ConnectionType> connectionType31 = new List<ConnectionType>();
     
     [Header("Player config")]
     public float speed = 5f;
@@ -59,9 +58,9 @@ public class PlayerManager : MonoBehaviour
         HandlePlayerMovement(player2, KeyCode.T, KeyCode.G, KeyCode.F, KeyCode.H);
         HandlePlayerMovement(player3, KeyCode.I, KeyCode.K, KeyCode.J, KeyCode.L);
         
-        EnforceMaxDistance(player1, player2, connectionType12.Last());
-        EnforceMaxDistance(player2, player3, connectionType23.Last());
-        EnforceMaxDistance(player3, player1, connectionType31.Last());
+        EnforceMaxDistance(player1, player2, rope12);
+        EnforceMaxDistance(player2, player3, rope23);
+        EnforceMaxDistance(player3, player1, rope31);
         
         player1.Move();
         player2.Move();
@@ -73,14 +72,9 @@ public class PlayerManager : MonoBehaviour
         player.currentDirection = player.GetMovementDirection(up,down,left,right).normalized * speed * Time.deltaTime;
     }
 
-    void EnforceMaxDistance(Player playerA, Player playerB, ConnectionType connection)
+    void EnforceMaxDistance(Player playerA, Player playerB, RopeManager rope)
     {
-        float maxDistance = connection switch
-        {
-            ConnectionType.Loose => ropeLenghtLoose,
-            ConnectionType.None => float.MaxValue,
-            _ => ropeLenghtTangled
-        };
+        float maxDistance = rope.currentPullDistance;
 
         float distance = Vector3.Distance(playerA.transform.position, playerB.transform.position);
 

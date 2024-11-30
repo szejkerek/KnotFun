@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 6881850723221655240}
   - component: {fileID: 1877653997682483030}
   - component: {fileID: 24106084986730647}
+  - component: {fileID: 5255578913926568040}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74facc012c18eaa4992cc16b22375f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerRope: {fileID: 0}
 --- !u!114 &1877653997682483030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +213,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5255578913926568040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2755821486037756550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e73fb3aab0954458d68c82b38f9195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentCharge: 1
 --- !u!1 &7558759852470534113
 GameObject:
   m_ObjectHideFlags: 0
