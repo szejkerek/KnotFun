@@ -2,7 +2,7 @@
 
 public class IdleState : EnemyState
 {
-    public IdleState(EnemyStateMachineBase stateMachine) : base(stateMachine) { }
+    public IdleState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
@@ -12,11 +12,6 @@ public class IdleState : EnemyState
     public override void Update()
     {
         Debug.Log("Idle State: Waiting...");
-        // Example transition to PatrolState
-        if (Time.timeSinceLevelLoad > 5f) // Dummy condition
-        {
-            stateMachine.ChangeState(new PatrolState(stateMachine));
-        }
     }
 
     public override void Exit()

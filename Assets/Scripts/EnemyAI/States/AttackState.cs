@@ -2,7 +2,12 @@
 
 public class AttackState : EnemyState
 {
-    public AttackState(EnemyStateMachineBase stateMachine) : base(stateMachine) { }
+    private bool isStationary;
+
+    public AttackState(EnemyStateMachine stateMachine, bool isStationary) : base(stateMachine)
+    {
+        this.isStationary = isStationary;
+    }
 
     public override void Enter()
     {
@@ -11,11 +16,7 @@ public class AttackState : EnemyState
 
     public override void Update()
     {
-        Debug.Log("Attacking...");
-        if (Time.timeSinceLevelLoad > 10f)
-        {
-            stateMachine.ChangeState(new IdleState(stateMachine));
-        }
+        Debug.Log($"Attacking {isStationary}...");
     }
 
     public override void Exit()
