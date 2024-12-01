@@ -60,8 +60,19 @@ public class Player : MonoBehaviour
         gamepads = Gamepad.all;
     }
 
+    private bool isCurrentlyActive = false;
+
     public void Move()
     {
+        // Determine if the character is active
+        bool isMovingOrShooting = GetMovementDirection() != Vector3.zero || TriggerHeld(gameDevice);
+
+        if (isMovingOrShooting != isCurrentlyActive)
+        {
+            isCurrentlyActive = isMovingOrShooting;
+            BulletTimeManager.Instance.SetCharacterActive(isCurrentlyActive);
+        }
+        
         if (dead) return;
         transform.LookAt(GetRotationDirection());
 
