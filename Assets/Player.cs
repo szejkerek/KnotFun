@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     bool isShooting = false;
 
     public Transform source;
+    public Transform scope;
+
     LineRenderer lineRenderer;
 
     Animator animator;
@@ -41,6 +43,8 @@ public class Player : MonoBehaviour
     public float height = 1f;
     public float length = 50f;
     public float dps = 30f;
+
+    
 
     public float rotationSpeed = 10f;
 
@@ -75,7 +79,7 @@ public class Player : MonoBehaviour
         }
         
         if (dead) return;
-        transform.LookAt(GetRotationDirection());
+        
 
         if (Mathf.Abs(currentDirection.x) + Mathf.Abs(currentDirection.z) > 0.01f)
         {
@@ -103,7 +107,7 @@ public class Player : MonoBehaviour
         
         animator.SetBool("IsShooting", isShooting);
 
-        Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
+        Vector3 targetPosition = scope.position + scope.forward * length;
         if (isShooting)
         {
             if (AudioSettings.dspTime == nextStartTime)
@@ -116,7 +120,7 @@ public class Player : MonoBehaviour
             { audioSource.Play(); }
 
             RaycastHit hit;
-            if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
+            if (Physics.Raycast(scope.position, scope.forward, out hit, length))
             {
                 targetPosition = hit.point;
                 if(hit.collider.gameObject.layer == 8)
@@ -139,6 +143,7 @@ public class Player : MonoBehaviour
         {
             audioSource.Stop();
         }
+        transform.LookAt(GetRotationDirection());
 
         lineRenderer.enabled = isShooting;
         lineRenderer.SetPosition(0, source.transform.position);
@@ -312,7 +317,7 @@ public class Player : MonoBehaviour
                 }
             default:
                 Debug.Log("GameDevice not set");
-                return Vector3.zero;
+                return transform.forward;
         }
 
 
