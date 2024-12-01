@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -113,8 +114,10 @@ public class Player : MonoBehaviour
                 if(hit.collider.gameObject.layer == 8)
                 {
                     EnemyHealth enemyHealth;
-                    hit.collider.gameObject.TryGetComponent<EnemyHealth>(out enemyHealth);
-                    enemyHealth.DecreaseHealth(Time.deltaTime * dps);
+                    if(hit.collider.gameObject.TryGetComponent<EnemyHealth>(out enemyHealth))
+                    {
+                        enemyHealth.DecreaseHealth(Time.deltaTime * dps);
+                    }
                 }
                 else if (hit.collider.gameObject.layer == 9)
                 {
