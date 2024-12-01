@@ -5,7 +5,7 @@ using UnityEngine;
 public class RopeManager : MonoBehaviour
 {
     private Rope rope;
-    [SerializeField] private GameObject ropeLoop;
+    RopeLoop ropeLoop;
     [SerializeField] private Player playerA;
     [SerializeField] private Player playerB;
     [SerializeField] private Vector2 ropeRenderLength;
@@ -37,11 +37,13 @@ public class RopeManager : MonoBehaviour
     private void Start()
     {
         rope = GetComponent<Rope>();
+        ropeLoop = GetComponentInChildren<RopeLoop>();
         rope.Init();
         playerA.PlayerAttackManager.OnChargeChanged += TryUpdateRope;
         playerB.PlayerAttackManager.OnChargeChanged += TryUpdateRope;
         SetRopeMaterial();
         TryUpdateRope();
+        ropeLoop.SetParent(this);
     }
 
     private void TryUpdateRope()
@@ -60,5 +62,11 @@ public class RopeManager : MonoBehaviour
         
         rope.ropeLength = currentRopeLength;
         rope.RecalculateRope();
+    }
+
+    public void ChargeBothPlayers(float value)
+    {
+        playerA.PlayerAttackManager.ChangeCharge(value);
+        playerB.PlayerAttackManager.ChangeCharge(value);
     }
 }

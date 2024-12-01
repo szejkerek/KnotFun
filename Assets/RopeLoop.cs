@@ -3,10 +3,14 @@ using UnityEngine;
 
 public class RopeLoop : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    RopeManager rope;
+    public void SetParent(RopeManager ropeManager)
     {
-        if (other.gameObject.tag != "EnemyBullet")
-            return;
-        
+        rope = ropeManager;
+    }
+
+    public void ChargeRope(float value)
+    {
+        rope.ChargeBothPlayers(value);
     }
 }

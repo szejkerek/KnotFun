@@ -18,6 +18,18 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if(collision.collider.TryGetComponent(out RopeLoop loop))
+            {
+                loop.ChargeRope(0.2f);
+            }
+
+            if (collision.collider.TryGetComponent(out Player player))
+            {
+                player.KillPlayer();
+            }
+        }
         Destroy(gameObject);
     }
 }
