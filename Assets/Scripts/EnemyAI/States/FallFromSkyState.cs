@@ -25,6 +25,7 @@ public class FallFromSkyState : EnemyState
 
             if (Physics.CheckSphere(stateMachine.transform.position.Add(y: -0.75f), 0.75f, stateMachine.GroundLayer))
             {
+                stateMachine.enemy.SetAnimationVariable(false, "IsJump");
                 isFalling = false; // Stop falling
                 timeOnGround = 2f; // Start counting time on the ground
             }

@@ -112,7 +112,9 @@ public class Player : MonoBehaviour
                 Debug.Log(hit.collider.gameObject);
                 if(hit.collider.gameObject.layer == 8)
                 {
-                    hit.collider.gameObject.GetComponent<EnemyHealth>().DecreaseHealth(Time.deltaTime * dps);
+                    EnemyHealth enemyHealth;
+                    hit.collider.gameObject.TryGetComponent<EnemyHealth>(out enemyHealth);
+                    enemyHealth.DecreaseHealth(Time.deltaTime * dps);
                 }
                 else if (hit.collider.gameObject.layer == 9)
                 {

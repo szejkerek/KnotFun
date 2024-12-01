@@ -33,7 +33,7 @@ public class ChaseState : EnemyState
 
     public override void Enter()
     {
-        stateMachine.enemy.SetAnimationVariable(true, "IsMoving");
+        
 
         if (_navMeshAgent != null && _target != null)
         {
@@ -50,15 +50,21 @@ public class ChaseState : EnemyState
         
         if(!_navMeshAgent.isOnNavMesh)
             return;
-        
+
+        _navMeshAgent.transform.LookAt(_target.transform.position);
+
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
         {
+            _navMeshAgent.velocity = Vector3.zero;
             stateMachine.ChangeState(new AttackState(stateMachine, _target));
         }
         else
         {
             _navMeshAgent.SetDestination(_target.transform.position);
         }
+
+        if(_navMeshAgent.velocity.magnitude > 0.25f) stateMachine.enemy.SetAnimationVariable(true, "IsMoving");
+        else stateMachine.enemy.SetAnimationVariable(false, "IsMoving");
     }
 
     public override void Exit()
