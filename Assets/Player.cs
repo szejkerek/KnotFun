@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.UIElements;
 
 
 public class Player : MonoBehaviour
@@ -27,12 +28,16 @@ public class Player : MonoBehaviour
     LineRenderer lineRenderer;
 
     Animator animator;
+    SkinnedMeshRenderer skinnedMeshRenderer;
 
     public List<Sound> sounds;
     public AudioManager audioManager;
     public AudioSource audioSource;
     public AudioSource audioSourceWalk;
     private double nextStartTime;
+
+    public float height = 1f;
+    public float length = 50f;
 
     private bool isGrounded;
 
@@ -41,10 +46,12 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         PlayerAttackManager = GetComponent<PlayerAttackManager>();
         animator = GetComponentInChildren<Animator>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        lineRenderer = GetComponentInChildren<LineRenderer>();
+
+        skinnedMeshRenderer.material.SetColor("_EmissionColor", GetMainMaterial().GetColor("_EmissionColor") * 3);
 
         gamepads = Gamepad.all;
-
-        GetComponent<MeshRenderer>().material = GetMainMaterial();
     }
 
     public void Move()
@@ -62,6 +69,31 @@ public class Player : MonoBehaviour
             audioSourceWalk.Stop();
         }
         characterController.Move(currentDirection);
+
+        isShooting = TriggerHeld(gameDevice);
+        animator.SetBool("IsShooting", isShooting);
+        Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
+
+        if (isShooting)
+        {
+            if (AudioSettings.dspTime == nextStartTime)
+            {
+                audioSource.PlayScheduled(nextStartTime);
+                nextStartTime += audioSource.clip.length;
+            }
+
+            if (!audioSource.isPlaying)
+            { audioSource.Play(); }
+            RaycastHit hit;
+            if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
+            {
+                targetPosition = hit.point;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
     }
     
     public Vector3 GetMovementDirection()
@@ -160,6 +192,7 @@ public class Player : MonoBehaviour
 
     public bool TriggerHeld(GameDevice device)
     {
+        return true;
         switch (gameDevice)
         {
             case GameDevice.Pad1:
@@ -167,9 +200,9 @@ public class Player : MonoBehaviour
             case GameDevice.Pad2:
                 break;
             case GameDevice.Keyboard:
-                break;
+                return Input.GetKey(KeyCode.Space);
         }
         
-        return Input.GetKeyDown(KeyCode.Space);
+        return false;
     }
 }
