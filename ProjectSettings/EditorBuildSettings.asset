@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 1f3fcf2031566704fb38dc610530c3ee
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: fb67065618e712a48952a0cfe8cf3a38
+  - enabled: 1
+    path: Assets/Scenes/Win Screen.unity
+    guid: 464a7c79fdc0e284f89cc3151d7af594
+  - enabled: 1
+    path: Assets/Scenes/Loose screen.unity
+    guid: 62c57d895acc4a647876ef7ecc9d6f88
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 75306a2b0ecb65343950d2a8ac811f7c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
