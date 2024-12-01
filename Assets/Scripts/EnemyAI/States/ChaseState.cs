@@ -33,6 +33,8 @@ public class ChaseState : EnemyState
 
     public override void Enter()
     {
+        stateMachine.enemy.SetAnimationVariable(true, "IsMoving");
+
         if (_navMeshAgent != null && _target != null)
         {
             EnsureAgentOnNavMesh();
@@ -62,7 +64,7 @@ public class ChaseState : EnemyState
     public override void Exit()
     {
         Debug.Log("Exiting Chase State");
-
+        stateMachine.enemy.SetAnimationVariable(false, "IsMoving");
         if (_navMeshAgent != null)
         {
             _navMeshAgent.isStopped = true;
