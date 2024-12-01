@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
     public GameDevice gameDevice;
     
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
+    
+
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
     {
         characterController.Move(currentDirection);
     }
-
+    
     public Vector3 GetMovementDirection()
     {
         if (debugNoPads)

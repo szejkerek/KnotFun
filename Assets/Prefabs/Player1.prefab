@@ -227,6 +227,11 @@ MonoBehaviour:
   keyboard: {fileID: 2100000, guid: 8da7f674d398dc142a9d6eccaa319108, type: 2}
   debugNoPads: 1
   gameDevice: 0
+  gravity: -9.81
+  groundCheckDistance: 2.04
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &6452773851881522176
 MonoBehaviour:
   m_ObjectHideFlags: 0
