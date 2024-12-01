@@ -239,13 +239,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeLoop: {fileID: 7903243671732984224}
   playerA: {fileID: 0}
   playerB: {fileID: 0}
   ropeRenderLength: {x: 2, y: 3.5}
   ropePullDistance: {x: 3.27, y: 15}
   currentRopeLength: 0
   currentPullDistance: 0
+  ropeMaterial: {fileID: 0}
+  locker: {fileID: 0}
 --- !u!114 &5980398421089263729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,10 +324,5 @@ PrefabInstance:
 --- !u!4 &7740950390204514039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6405455374347399192, guid: 542695998bc22ae49b0dcff30996429f, type: 3}
-  m_PrefabInstance: {fileID: 3713744440399515375}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7903243671732984224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6783591861507839823, guid: 542695998bc22ae49b0dcff30996429f, type: 3}
   m_PrefabInstance: {fileID: 3713744440399515375}
   m_PrefabAsset: {fileID: 0}
