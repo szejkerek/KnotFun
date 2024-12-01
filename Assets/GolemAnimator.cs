@@ -12,6 +12,7 @@ public class GolemAnimator : MonoBehaviour
     public float shootingSpeedModifier = 0.75f;
     bool dead = false;
     bool isShooting = false;
+    bool sceneEntry = false;
 
     public Transform source;
 
@@ -23,13 +24,19 @@ public class GolemAnimator : MonoBehaviour
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         cc = GetComponent<CharacterController>();
-       // nextStartTime = AudioSettings.dspTime + audioSource.clip.length;
+        // nextStartTime = AudioSettings.dspTime + audioSource.clip.length;
+        bool sceneEntry = true;
+        animator.SetBool("IsJump", sceneEntry);
+
     }
 
     private void Update()
     {
+        sceneEntry = false;
+        animator.SetBool("IsJump", sceneEntry);
+
         if (dead) return;
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
@@ -72,13 +79,13 @@ public class GolemAnimator : MonoBehaviour
 
         animator.SetBool("IsMoving", (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f));
 
-        if (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
-        {
-            if (!audioSourceWalk.isPlaying)
-                audioSourceWalk.Play();
-        }
-        else
-            audioSourceWalk.Stop();
+        //if (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
+        //{
+        //    if (!audioSourceWalk.isPlaying)
+        //        audioSourceWalk.Play();
+        //}
+        //else
+        //    audioSourceWalk.Stop();
 
 
         if (Input.GetKey(KeyCode.Y))
