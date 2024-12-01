@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
     public float length = 50f;
     public float dps = 30f;
 
+    public float rotationSpeed = 10f;
+
     private bool isGrounded;
 
     private void Awake()
@@ -60,10 +62,13 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
+        if (dead) return;
+        transform.LookAt(GetRotationDirection());
+
         if (Mathf.Abs(currentDirection.x) + Mathf.Abs(currentDirection.z) > 0.01f)
         {
             animator.SetBool("IsMoving", true);
-            transform.LookAt(transform.position + new Vector3(currentDirection.x, 0, currentDirection.z));
+            //transform.LookAt(transform.position + new Vector3(currentDirection.x, 0, currentDirection.z));
             if (!audioSourceWalk.isPlaying)
                 audioSourceWalk.Play();
         }
@@ -190,6 +195,99 @@ public class Player : MonoBehaviour
         
     }
 
+
+    public Vector3 GetRotationDirection()
+    {
+        if (dead) return Vector3.zero;
+        if (debugNoPads)
+        {
+            switch (gameDevice)
+            {
+                case GameDevice.Pad1:
+                    {
+                        Vector3 moveDirection = Vector3.zero;
+                        if (Input.GetKey(KeyCode.T)) moveDirection += Vector3.forward;
+                        if (Input.GetKey(KeyCode.G)) moveDirection += Vector3.back;
+                        if (Input.GetKey(KeyCode.F)) moveDirection += Vector3.left;
+                        if (Input.GetKey(KeyCode.H)) moveDirection += Vector3.right;
+
+                        return moveDirection;
+                    }
+                case GameDevice.Pad2:
+                    {
+                        Vector3 moveDirection = Vector3.zero;
+                        if (Input.GetKey(KeyCode.I)) moveDirection += Vector3.forward;
+                        if (Input.GetKey(KeyCode.K)) moveDirection += Vector3.back;
+                        if (Input.GetKey(KeyCode.J)) moveDirection += Vector3.left;
+                        if (Input.GetKey(KeyCode.L)) moveDirection += Vector3.right;
+
+                        return moveDirection;
+                    }
+
+                case GameDevice.Keyboard:
+                    {
+                        Vector3 moveDirection = Vector3.zero;
+                        if (Input.GetKey(KeyCode.W)) moveDirection += Vector3.forward;
+                        if (Input.GetKey(KeyCode.S)) moveDirection += Vector3.back;
+                        if (Input.GetKey(KeyCode.A)) moveDirection += Vector3.left;
+                        if (Input.GetKey(KeyCode.D)) moveDirection += Vector3.right;
+
+                        return moveDirection;
+
+                    }
+                default:
+                    Debug.Log("GameDevice not set");
+                    return Vector3.zero;
+            }
+        }
+
+        switch (gameDevice)
+        {
+            case GameDevice.Pad1:
+                {
+                    Vector3 rotation = Vector3.zero;
+                    Vector2 rotationInput = gamepads[0].rightStick.ReadValue().normalized;
+                    return transform.position + (Vector3.forward * rotationInput.y + Vector3.right * rotationInput.x);
+                }
+            case GameDevice.Pad2:
+                {
+                    Vector3 rotation = Vector3.zero;
+                    Vector2 rotationInput = gamepads[1].rightStick.ReadValue().normalized;
+                    return transform.position + (Vector3.forward * rotationInput.y + Vector3.right * rotationInput.x);
+                }
+
+            case GameDevice.Keyboard:
+                {
+                    Vector3 currentTarget = transform.position + transform.forward * 2;
+
+                    float rotationInput = 0f;
+                    if (Input.GetKey(KeyCode.Q))
+                    {
+                        rotationInput = -1f;
+                    }
+                    else if (Input.GetKey(KeyCode.E))
+                    {
+                        rotationInput = 1f;
+                    }
+
+                    if (rotationInput != 0)
+                    {
+                        float rotationAmount = rotationInput * rotationSpeed * Time.deltaTime;
+                        Vector3 direction = Quaternion.Euler(0, rotationAmount, 0) * transform.forward;
+                        currentTarget = transform.position + direction * 2;
+                        
+                    }
+                    return currentTarget;
+
+                }
+            default:
+                Debug.Log("GameDevice not set");
+                return Vector3.zero;
+        }
+
+
+    }
+
     public Material GetMainMaterial()
     {
         switch (gameDevice)
@@ -219,7 +317,7 @@ public class Player : MonoBehaviour
             case GameDevice.Pad2:
                 return (gamepads[1].rightTrigger.IsPressed() || gamepads[1].leftTrigger.IsPressed() || gamepads[1].aButton.IsPressed() || gamepads[1].xButton.IsPressed());
             case GameDevice.Keyboard:
-                return Input.GetKey(KeyCode.Space);
+                return Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0);
         }
         
         return false;
@@ -227,8 +325,13 @@ public class Player : MonoBehaviour
 
     public void KillPlayer()
     {
+        if (dead) return;
         dead = true;
         animator.SetBool("IsDead", true);
-        //throw new NotImplementedException();
+        foreach (Player g in GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None))
+        {
+            g.KillPlayer();
+        }
+        
     }
 }
