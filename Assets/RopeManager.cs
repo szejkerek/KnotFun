@@ -44,6 +44,8 @@ public class RopeManager : MonoBehaviour
         SetRopeMaterial();
         TryUpdateRope();
         ropeLoop.SetParent(this);
+
+        CentralCrystal.onWin += RemoveRope;
     }
 
     private void TryUpdateRope()

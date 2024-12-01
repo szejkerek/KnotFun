@@ -1,8 +1,9 @@
-using UnityEditor.ShaderGraph;
+using System;
 using UnityEngine;
 
 public class CentralCrystal : MonoBehaviour
 {
+    public static Action onWin;
     Vector3 initialPosition;
     public float maxShift = 0.5f, rotationSpeed = 5, floatSpeed = 0.2f;
 
@@ -58,5 +59,7 @@ public class CentralCrystal : MonoBehaviour
         b = 1;
 
         activated = true;
+        
+        onWin?.Invoke();
     }
 }

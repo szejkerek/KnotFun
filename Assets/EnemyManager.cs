@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -9,15 +11,33 @@ public class EnemyManager : MonoBehaviour
 
     public BoxCollider spawnArea; // The area where enemies will spawn
     public Enemy enemyPrefab; // The enemy prefab to spawn
-    private int maxEnemies = 5; // Max number of enemies in the scene
+    public int maxEnemies = 6; // Max number of enemies in the scene
     private float spawnInterval = 3f; // Interval to spawn new enemies
     private float amountIncreaseOverTime = 10;
 
-
+    public int startEnmies = 3;
+    
+    
+    
     private void Start()
     {
+        for (int i = 0; i <startEnmies; i++)
+        {
+            SpawnEnemies();
+        }
+        
         StartCoroutine(SpawnEnemies());
         StartCoroutine(IncreaseAmount());
+        CentralCrystal.onWin += KillAllEnemies;
+    }
+
+    private void KillAllEnemies()
+    {
+        foreach (var enemy in FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList())
+        {
+            Destroy(enemy.gameObject);
+        }
+        StopAllCoroutines();
     }
 
     private IEnumerator SpawnEnemies()
