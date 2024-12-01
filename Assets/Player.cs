@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
         PlayerAttackManager = GetComponent<PlayerAttackManager>();
 
         gamepads = Gamepad.all;
+
+        GetComponent<MeshRenderer>().material = GetMainMaterial();
     }
 
     public void Move()
