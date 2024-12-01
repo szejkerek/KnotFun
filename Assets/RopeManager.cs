@@ -51,6 +51,11 @@ public class RopeManager : MonoBehaviour
         ChangeRopeLenght(playerA.PlayerAttackManager.currentCharge, playerB.PlayerAttackManager.currentCharge);
     }
 
+    public void RemoveRope()
+    {
+        currentPullDistance = 9999f;
+        rope.gameObject.SetActive(false);
+    }
 
     public void ChangeRopeLenght(float t1, float t2)
     {

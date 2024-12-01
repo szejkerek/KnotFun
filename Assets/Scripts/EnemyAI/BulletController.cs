@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour
         {
             if(collision.collider.TryGetComponent(out RopeLoop loop))
             {
-                loop.ChargeRope(0.2f);
+                loop.ChargeRope(1f);
                 var visual = Instantiate(ropeHitViusal, transform.position, Quaternion.identity);
                 Destroy(visual.gameObject, 3f);
             }

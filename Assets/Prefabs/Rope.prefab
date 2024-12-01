@@ -223,7 +223,7 @@ MonoBehaviour:
   linePoints: 28
   stiffness: 350
   damping: 15
-  ropeLength: 1.5
+  ropeLength: 5.63
   ropeWidth: 0.1
   midPointWeight: 1
   midPointPosition: 0.5
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerA: {fileID: 0}
   playerB: {fileID: 0}
-  ropeRenderLength: {x: 2, y: 3.5}
-  ropePullDistance: {x: 3.27, y: 15}
+  ropeRenderLength: {x: 1.5, y: 7}
+  ropePullDistance: {x: 3, y: 12}
   currentRopeLength: 0
   currentPullDistance: 0
   ropeMaterial: {fileID: 0}

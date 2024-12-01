@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerAttackManager : MonoBehaviour
 {
     private Player player;
+    public float dischargeSpeed = 2f;
     
     public Action OnChargeChanged;
     [Range(0f,1f)] public float currentCharge;
@@ -18,19 +19,19 @@ public class PlayerAttackManager : MonoBehaviour
         if (player.gameDevice == GameDevice.Keyboard && 
             player.TriggerHeld(GameDevice.Keyboard))
         {
-            TryDischarge(5f*Time.deltaTime);
+            TryDischarge(dischargeSpeed*Time.deltaTime);
         }
         
         if (player.gameDevice == GameDevice.Pad1 && 
             player.TriggerHeld(GameDevice.Pad1))
         {
-            TryDischarge(5f*Time.deltaTime);
+            TryDischarge(dischargeSpeed*Time.deltaTime);
         }
         
         if (player.gameDevice == GameDevice.Pad2 && 
             player.TriggerHeld(GameDevice.Pad2))
         {
-            TryDischarge(5f*Time.deltaTime);
+            TryDischarge(dischargeSpeed*Time.deltaTime);
         }
     }
 
