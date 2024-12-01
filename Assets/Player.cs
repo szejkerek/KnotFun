@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     public float height = 1f;
     public float length = 50f;
+    public float dps = 30f;
 
     private bool isGrounded;
 
@@ -92,6 +93,11 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
             {
                 targetPosition = hit.point;
+
+                if(hit.collider.gameObject.layer == 8)
+                {
+                    hit.collider.gameObject.GetComponent<EnemyHealth>().DecreaseHealth(Time.deltaTime * dps);
+                }
             }
         }
         else
