@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class BulletTimeManager : MonoBehaviour
 {
-    private int activeCharacters = 0;
+    public int activeCharacters = 0;
     public static BulletTimeManager Instance { get; private set; }
 
     private void Awake()
@@ -10,12 +11,16 @@ public class BulletTimeManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        UpdateTimeScale();
     }
 
     // Adjust active character count and recalculate time scale
