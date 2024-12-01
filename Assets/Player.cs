@@ -216,6 +216,8 @@ public class Player : MonoBehaviour
 
     public void KillPlayer()
     {
+        dead = true;
+        animator.SetBool("IsDead", true);
         throw new NotImplementedException();
     }
 }
