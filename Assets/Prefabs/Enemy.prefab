@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19d2db2c0a633f4bb75a971e976714f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boom: {fileID: 4914716930404006884, guid: aed12c224fbc8704d8eaa07a52e88f44, type: 3}
   health: 100
 --- !u!195 &3629016954695353423
 NavMeshAgent:
@@ -202,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19d2db2c0a633f4bb75a971e976714f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boom: {fileID: 0}
   health: 100
 --- !u!54 &-3183727248352959428
 Rigidbody:
