@@ -30,12 +30,11 @@ public class ChaseState : EnemyState
         
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
         {
-            stateMachine.ChangeState(new AttackState(stateMachine));
+            stateMachine.ChangeState(new AttackState(stateMachine, _target));
         }
         else
         {
             _navMeshAgent.SetDestination(_target.transform.position);
-            Debug.Log("Chasing target...");
         }
     }
 

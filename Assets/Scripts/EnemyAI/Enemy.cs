@@ -8,6 +8,6 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
-        stateMachine.ChangeState(new AttackState(stateMachine));
+        stateMachine.ChangeState(new ChaseState(stateMachine));
     }
 }
