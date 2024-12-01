@@ -3,7 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 
     public class AudioManager : MonoBehaviour
-    {
+    {//singletona tu 
         public CustomAudioSettings audioSettings;
         [Header("SFX")]
         [SerializeField] AudioSource sfxSource;

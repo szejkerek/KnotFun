@@ -15,11 +15,15 @@ public class DummyAnimations : MonoBehaviour
     public Transform source;
     LineRenderer lineRenderer;
 
+    public AudioSource audioSource;
+    private double nextStartTime;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
         lineRenderer = GetComponent<LineRenderer>();
+        nextStartTime = AudioSettings.dspTime + audioSource.clip.length;
     }
 
     private void Update()
@@ -36,11 +40,23 @@ public class DummyAnimations : MonoBehaviour
 
         if (isShooting)
         {
+            if (AudioSettings.dspTime == nextStartTime)
+            {
+                audioSource.PlayScheduled(nextStartTime);
+                nextStartTime += audioSource.clip.length;
+            }
+
+            if (!audioSource.isPlaying)
+                { audioSource.Play(); }
             RaycastHit hit;
             if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
             {
                 targetPosition = hit.point;
             }
+        }
+        else
+        {
+            audioSource.Stop();
         }
 
 
