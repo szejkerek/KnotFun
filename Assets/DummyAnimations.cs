@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DummyAnimations : MonoBehaviour
@@ -15,7 +16,10 @@ public class DummyAnimations : MonoBehaviour
     public Transform source;
     LineRenderer lineRenderer;
 
+    public List<Sound> sounds;
+    public AudioManager audioManager;
     public AudioSource audioSource;
+    public AudioSource audioSourceWalk;
     private double nextStartTime;
 
     private void Start()
@@ -73,8 +77,18 @@ public class DummyAnimations : MonoBehaviour
 
         animator.SetBool("IsMoving", (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f));
 
+        if(Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
+        {
+            if(!audioSourceWalk.isPlaying)
+                audioSourceWalk.Play();
+        }
+        else
+            audioSourceWalk.Stop();
+
+
         if (Input.GetKey(KeyCode.Y))
         {
+            audioManager.Play(sounds[1]);
             dead = true;
             animator.SetBool("IsDead", true);
         }

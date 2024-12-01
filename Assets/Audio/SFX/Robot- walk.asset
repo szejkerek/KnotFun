@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd93b4b535de1f441b6204dddbbaa321, type: 3}
   m_Name: Robot- walk
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: d6f7318d14dd77642bdf33fa20ae48a6, type: 3}
+  clip: {fileID: 8300000, guid: 6eccce7bcb301334c980167b718d5921, type: 3}
   soundType: 0
   volume: 0.931
   pitch: {x: 0.84913045, y: 1.2891304}
