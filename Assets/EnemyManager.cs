@@ -16,10 +16,6 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        // Get all existing enemies in the scene
-        sceneEnemies = FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList();
-
-        // Start the spawning coroutine
         StartCoroutine(SpawnEnemies());
         StartCoroutine(IncreaseAmount());
     }
@@ -30,9 +26,7 @@ public class EnemyManager : MonoBehaviour
         {
             // Wait for the next spawn interval
             yield return new WaitForSeconds(spawnInterval);
-
-            // Only spawn if there are less than maxEnemies in the scene
-            if (sceneEnemies.Count < maxEnemies)
+            if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).ToList().Count < maxEnemies)
             {
                 SpawnEnemy();
             }
@@ -43,7 +37,6 @@ public class EnemyManager : MonoBehaviour
     {
         while (true)
         {
-            // Wait for the next spawn interval
             yield return new WaitForSeconds(amountIncreaseOverTime);
 
             maxEnemies += 1;

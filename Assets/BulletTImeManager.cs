@@ -44,7 +44,7 @@ public class BulletTimeManager : MonoBehaviour
         switch (activeCharacters)
         {
             case 0:
-                Time.timeScale = 0f; // All characters standing
+                Time.timeScale = 0.05f; // All characters standing
                 break;
             case 1:
                 Time.timeScale = 0.33f;
