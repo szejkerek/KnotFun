@@ -5,6 +5,7 @@ public class PlayerAttackManager : MonoBehaviour
 {
     private Player player;
     public float dischargeSpeed = 2f;
+    public MarkerX markerX;
     
     public Action OnChargeChanged;
     [Range(0f,1f)] public float currentCharge;
@@ -12,6 +13,9 @@ public class PlayerAttackManager : MonoBehaviour
     private void Awake()
     {
         player = GetComponent<Player>();
+        markerX.Init(player.transform);
+        markerX.gameObject.SetActive(false);
+        
     }
 
     private void Update()
@@ -39,6 +43,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if (currentCharge - value <= 0)
         {
+            markerX.gameObject.SetActive(true);
             currentCharge = 0;
             return false;
         }
@@ -48,7 +53,11 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void ChangeCharge(float value)
     {
+        
         currentCharge = Mathf.Clamp01(currentCharge + value);
         OnChargeChanged?.Invoke();
+        
+        if(currentCharge > 0)
+            markerX.gameObject.SetActive(false);
     }
 }
