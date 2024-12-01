@@ -2,13 +2,13 @@
 
 public class EnemyRangeWeapon : EnemyWeaponBase
 {
-    public override bool CanUseWeapon(GameObject target)
-    {
-        return true;
-    }
+    public BulletController bulletPrefab;
+    public float bulletSpeed = 10f;
 
-    public override void UseWeapon()
+    public override void UseWeapon(Transform target)
     {
-        Debug.Log("Weapon used");
+        BulletController bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
+        Vector3 direction = (target.position - attackPoint.position).normalized;
+        bullet.Initialize(direction, bulletSpeed);
     }
 }

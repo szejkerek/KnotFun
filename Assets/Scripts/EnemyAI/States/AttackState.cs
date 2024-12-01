@@ -7,7 +7,7 @@ public class AttackState : EnemyState
     private Player target;
     public AttackState(EnemyStateMachine stateMachine, Player target) : base(stateMachine)
     {
-        
+        this.target = target;
     }
 
     public override void Enter()
@@ -17,7 +17,7 @@ public class AttackState : EnemyState
 
     private void Shoot()
     {
-        Debug.Log("Shoot!");
+        stateMachine.EnemyAttackManager.Attack(target);
     }
 
     public override void Update()
