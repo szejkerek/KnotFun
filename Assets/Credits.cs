@@ -13,20 +13,26 @@ public class Credits : MonoBehaviour
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
     private Vector3 lastPosition;
 
+    public AudioManager audioManager;
+    public Sound music;
+
 
     private void Start()
     {
+        //audioManager = GetComponent<AudioManager>();
         lastPosition = transform.position;
+
+        audioManager.Play(music);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || gamepads[0].xButton.isPressed || gamepads[1].xButton.isPressed)
+        if (Input.GetKeyDown(KeyCode.Space) )//|| gamepads[0].xButton.isPressed || gamepads[1].xButton.isPressed)
         {
             Debug.Log("Start game");
             StartGame();
         }
-        else if (Input.GetKeyDown(KeyCode.RightShift) || gamepads[0].aButton.isPressed || gamepads[1].aButton.isPressed)
+        else if (Input.GetKeyDown(KeyCode.RightShift))//|| gamepads[0].aButton.isPressed || gamepads[1].aButton.isPressed)
         {
             Debug.Log("credits");
 
@@ -41,7 +47,7 @@ public class Credits : MonoBehaviour
                 menu.SetActive(false);
             }
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) || gamepads[0].startButton.isPressed || gamepads[1].startButton.isPressed)
+        else if(Input.GetKeyDown(KeyCode.Escape))//|| gamepads[0].startButton.isPressed || gamepads[1].startButton.isPressed)
         {
             Exit();
         }
@@ -74,4 +80,6 @@ public class Credits : MonoBehaviour
         credits.SetActive(false);
         menu.SetActive(true);
     }
+
+
 }
