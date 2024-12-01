@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyAnimations : MonoBehaviour
+public class GolemAnimator : MonoBehaviour
 {
     Animator animator;
     CharacterController cc;
@@ -14,7 +14,6 @@ public class DummyAnimations : MonoBehaviour
     bool isShooting = false;
 
     public Transform source;
-    LineRenderer lineRenderer;
 
     public List<Sound> sounds;
     public AudioManager audioManager;
@@ -26,8 +25,7 @@ public class DummyAnimations : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
-        lineRenderer = GetComponent<LineRenderer>();
-        nextStartTime = AudioSettings.dspTime + audioSource.clip.length;
+       // nextStartTime = AudioSettings.dspTime + audioSource.clip.length;
     }
 
     private void Update()
@@ -42,31 +40,28 @@ public class DummyAnimations : MonoBehaviour
 
         Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
 
-        if (isShooting)
-        {
-            if (AudioSettings.dspTime == nextStartTime)
-            {
-                audioSource.PlayScheduled(nextStartTime);
-                nextStartTime += audioSource.clip.length;
-            }
+        //if (isShooting)
+        //{
+        //    if (AudioSettings.dspTime == nextStartTime)
+        //    {
+        //        audioSource.PlayScheduled(nextStartTime);
+        //        nextStartTime += audioSource.clip.length;
+        //    }
 
-            if (!audioSource.isPlaying)
-                { audioSource.Play(); }
-            RaycastHit hit;
-            if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
-            {
-                targetPosition = hit.point;
-            }
-        }
-        else
-        {
-            audioSource.Stop();
-        }
+        //    if (!audioSource.isPlaying)
+        //    { audioSource.Play(); }
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
+        //    {
+        //        targetPosition = hit.point;
+        //    }
+        //}
+        //else
+        //{
+        //    audioSource.Stop();
+        //}
 
 
-        lineRenderer.enabled = isShooting;
-        lineRenderer.SetPosition(0, source.transform.position);
-        lineRenderer.SetPosition(1, targetPosition);
 
         if (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
         {
@@ -77,9 +72,9 @@ public class DummyAnimations : MonoBehaviour
 
         animator.SetBool("IsMoving", (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f));
 
-        if(Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
+        if (Mathf.Abs(v) + Mathf.Abs(h) > 0.01f)
         {
-            if(!audioSourceWalk.isPlaying)
+            if (!audioSourceWalk.isPlaying)
                 audioSourceWalk.Play();
         }
         else
@@ -92,6 +87,6 @@ public class DummyAnimations : MonoBehaviour
             dead = true;
             animator.SetBool("IsDead", true);
         }
-        
+
     }
 }
