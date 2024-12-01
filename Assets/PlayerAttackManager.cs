@@ -39,6 +39,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if (currentCharge - value <= 0)
         {
+            currentCharge = 0;
             return false;
         }
         ChangeCharge(-value);

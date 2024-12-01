@@ -92,6 +92,15 @@ public class Player : MonoBehaviour
         characterController.Move(currentDirection);
 
         isShooting = TriggerHeld(gameDevice);
+
+        if (PlayerAttackManager.currentCharge == 0)
+        {
+            lineRenderer.enabled = false;
+            audioSource.Stop();
+            animator.SetBool("IsShooting", false);
+            return;
+        }
+        
         animator.SetBool("IsShooting", isShooting);
 
         Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
@@ -123,6 +132,8 @@ public class Player : MonoBehaviour
                     hit.collider.gameObject.GetComponentInChildren<CentralCrystal>().AddColor(GetMainMaterial().GetColor("_EmissionColor"));
                 }
             }
+            
+            
         }
         else
         {
