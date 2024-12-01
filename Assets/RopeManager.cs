@@ -13,12 +13,16 @@ public class RopeManager : MonoBehaviour
     public float currentRopeLength;
     public float currentPullDistance;
 
+    public Material ropeMaterial;
+
     public void SetRopeMaterial()
     {
-        Material material = new Material(Shader.Find("Unlit/Color"));
+        Material material = Instantiate(ropeMaterial);
 
         Material materialA = playerA.GetMainMaterial();
-        Material materialB = playerB.GetMainMaterial();
+        Material materialB = playerB.GetMainMaterial();        
+
+        material.SetColor("_EmissionColor", materialA.GetColor("_EmissionColor") + materialB.GetColor("_EmissionColor"));
 
         RopeMesh ropeMesh = GetComponent<RopeMesh>();
         

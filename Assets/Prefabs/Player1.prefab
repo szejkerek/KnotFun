@@ -222,7 +222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74facc012c18eaa4992cc16b22375f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRope: {fileID: 0}
+  pad1Mat: {fileID: 2100000, guid: ef5f6781f8b7c4f4583e22ecb4db3dde, type: 2}
+  pad2Mat: {fileID: 2100000, guid: 83a25213107c03f4ba410fd5b0571001, type: 2}
+  keyboard: {fileID: 2100000, guid: 8da7f674d398dc142a9d6eccaa319108, type: 2}
+  debugNoPads: 1
+  gameDevice: 0
 --- !u!114 &6452773851881522176
 MonoBehaviour:
   m_ObjectHideFlags: 0

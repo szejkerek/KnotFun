@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 3297176849249952710}
     - target: {fileID: 6631198161812893664, guid: 23630e3bc5251404a97ffc1c2571b169, type: 3}
       propertyPath: gameDevice
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7217350801057369483, guid: 23630e3bc5251404a97ffc1c2571b169, type: 3}
       propertyPath: m_LocalPosition.x
@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: playerB
       value: 
       objectReference: {fileID: 6651794995325921090}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: ropeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3ee1b3df0487a4ea9ba7620dce05e1, type: 2}
     - target: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Name
       value: Rope23
@@ -784,6 +788,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[39].z
       value: 2.5900002
       objectReference: {fileID: 0}
+    - target: {fileID: 5980398421089263729, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 01f0d689e4ec7264d82dea116e4732df, type: 2}
     - target: {fileID: 7740950390204514039, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2867475
@@ -800,6 +808,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RopeMidPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 8935925513528592543, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 01f0d689e4ec7264d82dea116e4732df, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -960,6 +972,10 @@ PrefabInstance:
       propertyPath: playerB
       value: 
       objectReference: {fileID: 2338458418868587355}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: ropeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3ee1b3df0487a4ea9ba7620dce05e1, type: 2}
     - target: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Name
       value: Rope31
@@ -1496,6 +1512,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[39].z
       value: -5.1960344
       objectReference: {fileID: 0}
+    - target: {fileID: 5980398421089263729, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 20aa25c4efd833548b133573cc57d708, type: 2}
     - target: {fileID: 7740950390204514039, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9067478
@@ -1512,6 +1532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RopeMidPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 8935925513528592543, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 20aa25c4efd833548b133573cc57d708, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1569,6 +1593,10 @@ PrefabInstance:
       propertyPath: playerB
       value: 
       objectReference: {fileID: 3333987814144204260}
+    - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: ropeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: ab3ee1b3df0487a4ea9ba7620dce05e1, type: 2}
     - target: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: ropePullDistance.x
       value: 3.47
@@ -2113,6 +2141,10 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[39].z
       value: -1.9760348
       objectReference: {fileID: 0}
+    - target: {fileID: 5980398421089263729, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 808159084af7ce549820a48f0b7186f5, type: 2}
     - target: {fileID: 7740950390204514039, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.755
@@ -2137,6 +2169,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 7799626351564549041}
+    - targetCorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 2530810507415496964}
     - targetCorrespondingSourceObject: {fileID: 7903243671732984224, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4136450722949611227}
@@ -2158,12 +2196,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e4b7380dd0a1e444820281cd9f2ef2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4956813272121597100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1769308603198159199, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
+  m_PrefabInstance: {fileID: 6649560058660447731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &7799626351564549041
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956813272121597100}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2530810507415496964
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4956813272121597100}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 808159084af7ce549820a48f0b7186f5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &5749238078113884899 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1409237689356799760, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
   m_PrefabInstance: {fileID: 6649560058660447731}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4956813272121597100}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70fd5a8099624bb4eb18bd011c15ac46, type: 3}
