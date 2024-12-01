@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce05fc806e4d4e4882c1c10496c725e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ropeHitViusal: {fileID: 1122534249360325409, guid: 362eec04beb81a941bdae7c4fa4167f1, type: 3}
+  bloodHitVisual: {fileID: 4397334591890123670, guid: b0159ffb3464ec5478e3f6e6ce51d561, type: 3}
 --- !u!65 &8879963776740826750
 BoxCollider:
   m_ObjectHideFlags: 0

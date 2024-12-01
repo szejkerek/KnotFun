@@ -197,7 +197,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 0.24, y: 2.49, z: 1.09}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3200195099324310989
 MonoBehaviour:
@@ -391,7 +391,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.24, y: 2.49, z: 1.09}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5802861304823009615
 GameObject:
@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 9215044743969507733}
     - target: {fileID: 6631198161812893664, guid: 23630e3bc5251404a97ffc1c2571b169, type: 3}
       propertyPath: debugNoPads
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6631198161812893664, guid: 23630e3bc5251404a97ffc1c2571b169, type: 3}
       propertyPath: audioSourceWalk
@@ -1442,7 +1442,7 @@ PrefabInstance:
       objectReference: {fileID: 2073166877104928294}
     - target: {fileID: 4353682839958060030, guid: 1af96ed2c7422924295087e40dd34fdf, type: 3}
       propertyPath: debugNoPads
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4353682839958060030, guid: 1af96ed2c7422924295087e40dd34fdf, type: 3}
       propertyPath: audioSourceWalk
@@ -1804,15 +1804,15 @@ PrefabInstance:
       objectReference: {fileID: 479921060607496256}
     - target: {fileID: 4924320741018287769, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 4924320741018287769, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Size.y
-      value: 2
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 4924320741018287769, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Size.z
-      value: 1
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 5864043483073392025, guid: 5e0aaee76fa35cf438ed6036f8c425f5, type: 3}
       propertyPath: m_Positions.Array.size
@@ -3690,7 +3690,7 @@ PrefabInstance:
       objectReference: {fileID: 1523914414866046611}
     - target: {fileID: 6881850723221655240, guid: 823575873e9e4b94e9b4aad683152d11, type: 3}
       propertyPath: debugNoPads
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6881850723221655240, guid: 823575873e9e4b94e9b4aad683152d11, type: 3}
       propertyPath: audioSourceWalk

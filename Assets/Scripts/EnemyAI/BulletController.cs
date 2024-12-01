@@ -2,6 +2,9 @@
 
 public class BulletController : MonoBehaviour
 {
+    public GameObject ropeHitViusal;
+    public GameObject bloodHitVisual;
+
     private Vector3 moveDirection;
     private float speed;          
 
@@ -18,18 +21,28 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.CompareTag("Enemy"))
+            return;
+        
         if (collision.gameObject.CompareTag("Player"))
         {
             if(collision.collider.TryGetComponent(out RopeLoop loop))
             {
                 loop.ChargeRope(0.2f);
+                var visual = Instantiate(ropeHitViusal, transform.position, Quaternion.identity);
+                Destroy(visual.gameObject, 3f);
             }
 
             if (collision.collider.TryGetComponent(out Player player))
             {
                 player.KillPlayer();
+                var blood = Instantiate(bloodHitVisual, transform.position, Quaternion.identity);
+                Destroy(blood.gameObject, 3f);
             }
+            
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        
+        
     }
 }
