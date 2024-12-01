@@ -36,9 +36,6 @@ public class CentralCrystal : MonoBehaviour
     {
         transform.position = initialPosition + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * maxShift;
         transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * rotationSpeed);
-
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-            Activate();
         
         if (activated)
         {

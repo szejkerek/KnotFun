@@ -15,17 +15,12 @@ public class EnemyManager : MonoBehaviour
     private float spawnInterval = 3f; // Interval to spawn new enemies
     private float amountIncreaseOverTime = 10;
 
-    public int startEnmies = 3;
+    public int startEnmies = 1;
     
     
     
     private void Start()
     {
-        for (int i = 0; i <startEnmies; i++)
-        {
-            SpawnEnemy();
-        }
-        
         StartCoroutine(SpawnEnemies());
         StartCoroutine(IncreaseAmount());
         CentralCrystal.onWin += KillAllEnemies;
