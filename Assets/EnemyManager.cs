@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     {
         for (int i = 0; i <startEnmies; i++)
         {
-            SpawnEnemies();
+            SpawnEnemy();
         }
         
         StartCoroutine(SpawnEnemies());
