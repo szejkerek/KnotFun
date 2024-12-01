@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using UnityEngine.UIElements;
 
 
 public class Player : MonoBehaviour
@@ -17,7 +20,25 @@ public class Player : MonoBehaviour
     public GameDevice gameDevice;
     
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
-    
+
+
+    bool dead = false;
+    bool isShooting = false;
+
+    public Transform source;
+    LineRenderer lineRenderer;
+
+    Animator animator;
+    SkinnedMeshRenderer skinnedMeshRenderer;
+
+    public List<Sound> sounds;
+    public AudioManager audioManager;
+    public AudioSource audioSource;
+    public AudioSource audioSourceWalk;
+    private double nextStartTime;
+
+    public float height = 1f;
+    public float length = 50f;
 
     private bool isGrounded;
 
@@ -25,17 +46,65 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         PlayerAttackManager = GetComponent<PlayerAttackManager>();
+        animator = GetComponentInChildren<Animator>();
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        lineRenderer = GetComponentInChildren<LineRenderer>();
+
+        lineRenderer.material.SetColor("_EmissionColor", GetMainMaterial().GetColor("_EmissionColor") * 3);
+
+        skinnedMeshRenderer.material.SetColor("_EmissionColor", GetMainMaterial().GetColor("_EmissionColor") * 3);
 
         gamepads = Gamepad.all;
-
-        GetComponent<MeshRenderer>().material = GetMainMaterial();
     }
 
     public void Move()
     {
+        if (Mathf.Abs(currentDirection.x) + Mathf.Abs(currentDirection.z) > 0.01f)
+        {
+            animator.SetBool("IsMoving", true);
+            transform.LookAt(transform.position + new Vector3(currentDirection.x, 0, currentDirection.z));
+            if (!audioSourceWalk.isPlaying)
+                audioSourceWalk.Play();
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+            audioSourceWalk.Stop();
+        }
         characterController.Move(currentDirection);
+
+        isShooting = TriggerHeld(gameDevice);
+        animator.SetBool("IsShooting", isShooting);
+
+        Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
+        if (isShooting)
+        {
+            if (AudioSettings.dspTime == nextStartTime)
+            {
+                audioSource.PlayScheduled(nextStartTime);
+                nextStartTime += audioSource.clip.length;
+            }
+
+            if (!audioSource.isPlaying)
+            { audioSource.Play(); }
+
+            RaycastHit hit;
+            if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
+            {
+                targetPosition = hit.point;
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
+
+        lineRenderer.enabled = isShooting;
+        lineRenderer.SetPosition(0, source.transform.position);
+        lineRenderer.SetPosition(1, targetPosition);
+
     }
-    
+
     public Vector3 GetMovementDirection()
     {
         if (debugNoPads)
@@ -135,13 +204,13 @@ public class Player : MonoBehaviour
         switch (gameDevice)
         {
             case GameDevice.Pad1:
-                break;
+                return (gamepads[0].rightTrigger.IsPressed() || gamepads[0].leftTrigger.IsPressed() || gamepads[0].aButton.IsPressed() || gamepads[0].xButton.IsPressed());
             case GameDevice.Pad2:
-                break;
+                return (gamepads[1].rightTrigger.IsPressed() || gamepads[1].leftTrigger.IsPressed() || gamepads[1].aButton.IsPressed() || gamepads[1].xButton.IsPressed());
             case GameDevice.Keyboard:
-                break;
+                return Input.GetKey(KeyCode.Space);
         }
         
-        return Input.GetKeyDown(KeyCode.Space);
+        return false;
     }
 }
