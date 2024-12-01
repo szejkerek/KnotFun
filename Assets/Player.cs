@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -17,7 +18,21 @@ public class Player : MonoBehaviour
     public GameDevice gameDevice;
     
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
-    
+
+
+    bool dead = false;
+    bool isShooting = false;
+
+    public Transform source;
+    LineRenderer lineRenderer;
+
+    Animator animator;
+
+    public List<Sound> sounds;
+    public AudioManager audioManager;
+    public AudioSource audioSource;
+    public AudioSource audioSourceWalk;
+    private double nextStartTime;
 
     private bool isGrounded;
 
@@ -25,6 +40,7 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         PlayerAttackManager = GetComponent<PlayerAttackManager>();
+        animator = GetComponentInChildren<Animator>();
 
         gamepads = Gamepad.all;
 
@@ -33,6 +49,18 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
+        if (Mathf.Abs(currentDirection.x) + Mathf.Abs(currentDirection.z) > 0.01f)
+        {
+            animator.SetBool("IsMoving", true);
+            transform.LookAt(transform.position + new Vector3(currentDirection.x, 0, currentDirection.z));
+            if (!audioSourceWalk.isPlaying)
+                audioSourceWalk.Play();
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+            audioSourceWalk.Stop();
+        }
         characterController.Move(currentDirection);
     }
     
