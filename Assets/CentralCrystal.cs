@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CentralCrystal : MonoBehaviour
 {
@@ -36,13 +37,19 @@ public class CentralCrystal : MonoBehaviour
     {
         transform.position = initialPosition + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * maxShift;
         transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * rotationSpeed);
-        
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Activate();
+            return;
+        }
         if (activated)
         {
+
             if (engamePads.All(pad => pad.winnerIsStanding))
             {
                 Debug.Log("All pads are winning!");
-                //Load scene
+                SceneManager.LoadScene(3);
+                return;
             }
             return;
         }

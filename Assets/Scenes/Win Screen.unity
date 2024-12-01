@@ -6395,6 +6395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 1726709468}
   credits: {fileID: 541283949}
+  music: {fileID: 11400000, guid: 941411c4ed782ea428e2c4ac7f32e252, type: 2}
 --- !u!4 &1867925613
 Transform:
   m_ObjectHideFlags: 0
