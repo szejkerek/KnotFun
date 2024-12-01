@@ -213,4 +213,9 @@ public class Player : MonoBehaviour
         
         return false;
     }
+
+    public void KillPlayer()
+    {
+        throw new NotImplementedException();
+    }
 }
