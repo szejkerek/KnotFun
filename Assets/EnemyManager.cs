@@ -5,12 +5,14 @@ using System.Linq;
 
 public class EnemyManager : MonoBehaviour
 {
-    private List<Enemy> sceneEnemies = new List<Enemy>();
+    public List<Enemy> sceneEnemies = new List<Enemy>();
 
     public BoxCollider spawnArea; // The area where enemies will spawn
     public Enemy enemyPrefab; // The enemy prefab to spawn
     private int maxEnemies = 5; // Max number of enemies in the scene
     private float spawnInterval = 3f; // Interval to spawn new enemies
+    private float amountIncreaseOverTime = 10;
+
 
     private void Start()
     {
@@ -19,6 +21,7 @@ public class EnemyManager : MonoBehaviour
 
         // Start the spawning coroutine
         StartCoroutine(SpawnEnemies());
+        StartCoroutine(IncreaseAmount());
     }
 
     private IEnumerator SpawnEnemies()
@@ -33,6 +36,17 @@ public class EnemyManager : MonoBehaviour
             {
                 SpawnEnemy();
             }
+        }
+    }
+
+    private IEnumerator IncreaseAmount()
+    {
+        while (true)
+        {
+            // Wait for the next spawn interval
+            yield return new WaitForSeconds(amountIncreaseOverTime);
+
+            maxEnemies += 1;
         }
     }
 
