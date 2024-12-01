@@ -12,6 +12,7 @@ public class AttackState : EnemyState
 
     public override void Enter()
     {
+        stateMachine.enemy.SetAnimationVariable(true, "IsShooting");
         Shoot();
     }
 
@@ -29,6 +30,6 @@ public class AttackState : EnemyState
 
     public override void Exit()
     {
-
+        stateMachine.enemy.SetAnimationVariable(false, "IsShooting");
     }
 }

@@ -13,6 +13,7 @@ public class FallFromSkyState : EnemyState
 
     public override void Enter()
     {
+        stateMachine.enemy.SetAnimationVariable(true, "IsJump");
         isFalling = true;
         timeOnGround = 0f;
     }
@@ -42,6 +43,7 @@ public class FallFromSkyState : EnemyState
 
     public override void Exit()
     {
+        stateMachine.enemy.SetAnimationVariable(false, "IsJump");
         Debug.Log("Exiting FallFromSkyState");
     }
 }

@@ -6,6 +6,7 @@ public class EnemyStateMachine : MonoBehaviour
 {
     
     private EnemyState currentState;
+    public Enemy enemy;
     public NavMeshAgent NavMeshAgent {get; private set;}
     public LayerMask GroundLayer;
     public EnemyAttackManager EnemyAttackManager {get; private set;}
