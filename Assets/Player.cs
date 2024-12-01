@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
             {
                 targetPosition = hit.point;
-
+                Debug.Log(hit.collider.gameObject);
                 if(hit.collider.gameObject.layer == 8)
                 {
                     hit.collider.gameObject.GetComponent<EnemyHealth>().DecreaseHealth(Time.deltaTime * dps);
