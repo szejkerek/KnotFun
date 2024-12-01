@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
+        if (dead) return;
         transform.LookAt(GetRotationDirection());
 
         if (Mathf.Abs(currentDirection.x) + Mathf.Abs(currentDirection.z) > 0.01f)
@@ -197,6 +198,7 @@ public class Player : MonoBehaviour
 
     public Vector3 GetRotationDirection()
     {
+        if (dead) return Vector3.zero;
         if (debugNoPads)
         {
             switch (gameDevice)
@@ -323,8 +325,13 @@ public class Player : MonoBehaviour
 
     public void KillPlayer()
     {
+        if (dead) return;
         dead = true;
         animator.SetBool("IsDead", true);
-        throw new NotImplementedException();
+        foreach (Player g in GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None))
+        {
+            g.KillPlayer();
+        }
+        
     }
 }
