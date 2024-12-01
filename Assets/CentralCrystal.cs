@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CentralCrystal : MonoBehaviour
@@ -14,6 +16,7 @@ public class CentralCrystal : MonoBehaviour
     public Material crystalMaterial;
 
     public bool activated = false;
+    public List<EndGamePad> engamePads = new();
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +24,11 @@ public class CentralCrystal : MonoBehaviour
     {
         initialPosition = transform.position;  
         crystalMaterial = GetComponent<MeshRenderer>().material;
+
+        foreach (var pad in engamePads)
+        {
+            pad.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -29,7 +37,18 @@ public class CentralCrystal : MonoBehaviour
         transform.position = initialPosition + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * maxShift;
         transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * rotationSpeed);
 
-        if(activated) return;
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+            Activate();
+        
+        if (activated)
+        {
+            if (engamePads.All(pad => pad.winnerIsStanding))
+            {
+                Debug.Log("All pads are winning!");
+                //Load scene
+            }
+            return;
+        }
 
         r -= Time.deltaTime * colorLoss;
         g -= Time.deltaTime * colorLoss;
@@ -59,7 +78,10 @@ public class CentralCrystal : MonoBehaviour
         b = 1;
 
         activated = true;
-        
+        foreach (var pad in engamePads)
+        {
+            pad.gameObject.SetActive(true);
+        }
         onWin?.Invoke();
     }
 }
