@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
@@ -49,6 +50,8 @@ public class Player : MonoBehaviour
         skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         lineRenderer = GetComponentInChildren<LineRenderer>();
 
+        lineRenderer.material.SetColor("_EmissionColor", GetMainMaterial().GetColor("_EmissionColor") * 3);
+
         skinnedMeshRenderer.material.SetColor("_EmissionColor", GetMainMaterial().GetColor("_EmissionColor") * 3);
 
         gamepads = Gamepad.all;
@@ -72,8 +75,8 @@ public class Player : MonoBehaviour
 
         isShooting = TriggerHeld(gameDevice);
         animator.SetBool("IsShooting", isShooting);
-        Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
 
+        Vector3 targetPosition = (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized * length;
         if (isShooting)
         {
             if (AudioSettings.dspTime == nextStartTime)
@@ -84,6 +87,7 @@ public class Player : MonoBehaviour
 
             if (!audioSource.isPlaying)
             { audioSource.Play(); }
+
             RaycastHit hit;
             if (Physics.Raycast(source.transform.position, (transform.position + transform.rotation * Vector3.forward * length + Vector3.up * height).normalized, out hit, length))
             {
@@ -94,8 +98,13 @@ public class Player : MonoBehaviour
         {
             audioSource.Stop();
         }
+
+        lineRenderer.enabled = isShooting;
+        lineRenderer.SetPosition(0, source.transform.position);
+        lineRenderer.SetPosition(1, targetPosition);
+
     }
-    
+
     public Vector3 GetMovementDirection()
     {
         if (debugNoPads)
@@ -192,13 +201,12 @@ public class Player : MonoBehaviour
 
     public bool TriggerHeld(GameDevice device)
     {
-        return true;
         switch (gameDevice)
         {
             case GameDevice.Pad1:
-                break;
+                return (gamepads[0].rightTrigger.IsPressed() || gamepads[0].leftTrigger.IsPressed() || gamepads[0].aButton.IsPressed() || gamepads[0].xButton.IsPressed());
             case GameDevice.Pad2:
-                break;
+                return (gamepads[1].rightTrigger.IsPressed() || gamepads[1].leftTrigger.IsPressed() || gamepads[1].aButton.IsPressed() || gamepads[1].xButton.IsPressed());
             case GameDevice.Keyboard:
                 return Input.GetKey(KeyCode.Space);
         }
