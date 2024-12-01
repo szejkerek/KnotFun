@@ -1,8 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
     private EnemyState currentState;
+    public NavMeshAgent NavMeshAgent {get; private set;}
+    public EnemyAttackManager EnemyAttackManager {get; private set;}
+
+    private void Awake()
+    {
+        NavMeshAgent = GetComponent<NavMeshAgent>();    
+        EnemyAttackManager = GetComponent<EnemyAttackManager>();    
+    }
+
     private void Update()
     {
         if (currentState != null)

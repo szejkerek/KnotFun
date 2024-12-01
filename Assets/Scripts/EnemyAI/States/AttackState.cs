@@ -2,11 +2,9 @@
 
 public class AttackState : EnemyState
 {
-    private bool isStationary;
-
-    public AttackState(EnemyStateMachine stateMachine, bool isStationary) : base(stateMachine)
+    public AttackState(EnemyStateMachine stateMachine) : base(stateMachine)
     {
-        this.isStationary = isStationary;
+        
     }
 
     public override void Enter()
@@ -16,7 +14,7 @@ public class AttackState : EnemyState
 
     public override void Update()
     {
-        Debug.Log($"Attacking {isStationary}...");
+        Debug.Log($"Attacking ...");
     }
 
     public override void Exit()
