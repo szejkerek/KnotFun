@@ -8,6 +8,6 @@ public class Enemy : MonoBehaviour
     
     private void Start()
     {
-        stateMachine.ChangeState(new FallFromSkyState(stateMachine, Vector3.zero));
+        stateMachine.ChangeState(new FallFromSkyState(stateMachine));
     }
 }

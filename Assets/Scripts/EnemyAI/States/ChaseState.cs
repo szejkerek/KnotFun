@@ -12,20 +12,44 @@ public class ChaseState : EnemyState
         _target = stateMachine.EnemyAttackManager.GetClosestPlayer();
     }
 
+    private void EnsureAgentOnNavMesh()
+    {
+        if (!_navMeshAgent.isOnNavMesh)
+        {
+            Vector3 position = _navMeshAgent.transform.position;
+            NavMeshHit hit;
+
+            if (NavMesh.SamplePosition(position, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                _navMeshAgent.Warp(hit.position);
+                Debug.Log("Repositioned NavMeshAgent onto the NavMesh.");
+            }
+            else
+            {
+                Debug.LogError("Failed to find a valid NavMesh position.");
+            }
+        }
+    }
+
     public override void Enter()
     {
         Debug.Log("Entering Chase State");
 
+        
         if (_navMeshAgent != null && _target != null)
         {
-            _navMeshAgent.isStopped = false;
+            EnsureAgentOnNavMesh();
             _navMeshAgent.SetDestination(_target.transform.position);
+            _navMeshAgent.isStopped = false;
         }
     }
 
     public override void Update()
     {
         if (_navMeshAgent == null || _target == null)
+            return;
+        
+        if(!_navMeshAgent.isOnNavMesh)
             return;
         
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
