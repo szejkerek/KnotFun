@@ -361,6 +361,8 @@ public class Player : MonoBehaviour
     public void KillPlayer()
     {
         if (dead) return;
+        audioSource.Stop();
+        audioSourceWalk.Stop();
         lineRenderer.enabled = false;
         dead = true;
         animator.SetBool("IsDead", true);

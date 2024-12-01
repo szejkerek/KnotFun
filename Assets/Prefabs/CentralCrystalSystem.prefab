@@ -365,7 +365,7 @@ MonoBehaviour:
   floatSpeed: 1.2
   colorDelta: 0.5
   colorLoss: 0.2
-  maxBrightness: 3
+  maxBrightness: 5
   r: 0
   g: 0
   b: 0
