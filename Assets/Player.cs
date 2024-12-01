@@ -103,6 +103,10 @@ public class Player : MonoBehaviour
                 {
                     hit.collider.gameObject.GetComponent<EnemyHealth>().DecreaseHealth(Time.deltaTime * dps);
                 }
+                else if (hit.collider.gameObject.layer == 9)
+                {
+                    hit.collider.gameObject.GetComponentInChildren<CentralCrystal>().AddColor(GetMainMaterial().GetColor("_EmissionColor"));
+                }
             }
         }
         else
@@ -326,6 +330,7 @@ public class Player : MonoBehaviour
     public void KillPlayer()
     {
         if (dead) return;
+        lineRenderer.enabled = false;
         dead = true;
         animator.SetBool("IsDead", true);
         foreach (Player g in GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None))

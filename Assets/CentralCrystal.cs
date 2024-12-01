@@ -12,6 +12,8 @@ public class CentralCrystal : MonoBehaviour
 
     public Material crystalMaterial;
 
+    public bool activated = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,17 +28,35 @@ public class CentralCrystal : MonoBehaviour
         transform.position = initialPosition + Vector3.up * Mathf.Sin(Time.time * floatSpeed) * maxShift;
         transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * rotationSpeed);
 
-        if (Input.GetKey(KeyCode.R)) r += Time.deltaTime * colorDelta;
-        else r -= Time.deltaTime * colorLoss;
-        if (Input.GetKey(KeyCode.G)) g += Time.deltaTime * colorDelta;
-        else g -= Time.deltaTime * colorLoss;
-        if (Input.GetKey(KeyCode.B)) b += Time.deltaTime * colorDelta;
-        else b -= Time.deltaTime * colorLoss;
+        if(activated) return;
+
+        r -= Time.deltaTime * colorLoss;
+        g -= Time.deltaTime * colorLoss;
+        b -= Time.deltaTime * colorLoss;
+
         r = Mathf.Clamp(r, 0, 1);
         g = Mathf.Clamp(g, 0, 1);
         b = Mathf.Clamp(b, 0, 1);
 
 
         crystalMaterial.SetColor("_EmissionColor", new Color(r,g,b) * (r+g+b)/3 * maxBrightness);
+    }
+
+    public void AddColor(Color col)
+    {
+        r += Time.deltaTime * colorDelta * Mathf.Clamp(col.r, 0, 1);
+        g += Time.deltaTime * colorDelta * Mathf.Clamp(col.g, 0, 1);
+        b += Time.deltaTime * colorDelta * Mathf.Clamp(col.b, 0, 1);
+
+        if (r + g + b > 2.8f) Activate();
+    }
+
+    public void Activate()
+    {
+        r = 1;
+        g = 1;
+        b = 1;
+
+        activated = true;
     }
 }
