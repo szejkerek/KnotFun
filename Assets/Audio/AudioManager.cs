@@ -4,6 +4,22 @@ using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance { get; private set; }
+
+    void Awake()
+    {
+        // Check if an instance already exists
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Prevent this object from being destroyed on scene load
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject); // Destroy duplicate instances
+        }
+    }
+    
     public CustomAudioSettings audioSettings;
 
     [Header("SFX")]

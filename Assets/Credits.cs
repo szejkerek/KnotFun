@@ -12,8 +12,7 @@ public class Credits : MonoBehaviour
 
     public ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
     private Vector3 lastPosition;
-
-    public AudioManager audioManager;
+    
     public Sound music;
 
 
@@ -22,7 +21,7 @@ public class Credits : MonoBehaviour
         //audioManager = GetComponent<AudioManager>();
         lastPosition = transform.position;
 
-        audioManager.Play(music);
+        AudioManager.Instance.Play(music);
     }
 
     public void Update()

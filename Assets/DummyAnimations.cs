@@ -88,7 +88,7 @@ public class DummyAnimations : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Y))
         {
-            audioManager.Play(sounds[0]);
+            AudioManager.Instance.Play(sounds[0]);
             dead = true;
             animator.SetBool("IsDead", true);
         }
