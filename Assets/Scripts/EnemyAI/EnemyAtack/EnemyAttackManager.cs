@@ -8,6 +8,7 @@ public class EnemyAttackManager : MonoBehaviour
     private Enemy _enemy;
     
     List<Player> _players;
+    public EnemyWeaponBase weapon;
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
@@ -29,5 +30,10 @@ public class EnemyAttackManager : MonoBehaviour
         }
 
         return targetPlayer;
+    }
+
+    public void Attack(Player target)
+    {
+        weapon.UseWeapon(target.transform);
     }
 }

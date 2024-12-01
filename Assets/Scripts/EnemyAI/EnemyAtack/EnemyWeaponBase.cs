@@ -9,6 +9,5 @@ public abstract class EnemyWeaponBase : MonoBehaviour
     {
         _config = config;
     }
-    public abstract bool CanUseWeapon(GameObject target);
-    public abstract void UseWeapon();
+    public abstract void UseWeapon(Transform target);
 }
