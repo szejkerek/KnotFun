@@ -201,6 +201,11 @@ public class Player : MonoBehaviour
 
     public bool TriggerHeld(GameDevice device)
     {
+        if (debugNoPads)
+        {
+            return Input.GetKey(KeyCode.Space);
+        }
+        
         switch (gameDevice)
         {
             case GameDevice.Pad1:
