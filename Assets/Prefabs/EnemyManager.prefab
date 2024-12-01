@@ -156,3 +156,6 @@ MonoBehaviour:
   sceneEnemies: []
   spawnArea: {fileID: 4287325808102034920}
   enemyPrefab: {fileID: 4329789879751419078, guid: 85e643c34a6864d4493411322d03a701, type: 3}
+  maxEnemies: 6
+  spawnInterval: 4.5
+  startEnmies: 1

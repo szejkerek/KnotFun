@@ -12,7 +12,7 @@ public class EnemyManager : MonoBehaviour
     public BoxCollider spawnArea; // The area where enemies will spawn
     public Enemy enemyPrefab; // The enemy prefab to spawn
     public int maxEnemies = 6; // Max number of enemies in the scene
-    private float spawnInterval = 3f; // Interval to spawn new enemies
+    public float spawnInterval = 3f; // Interval to spawn new enemies
     private float amountIncreaseOverTime = 10;
 
     public int startEnmies = 1;
