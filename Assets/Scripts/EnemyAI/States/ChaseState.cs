@@ -33,9 +33,6 @@ public class ChaseState : EnemyState
 
     public override void Enter()
     {
-        Debug.Log("Entering Chase State");
-
-        
         if (_navMeshAgent != null && _target != null)
         {
             EnsureAgentOnNavMesh();
