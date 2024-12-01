@@ -229,6 +229,6 @@ public class Player : MonoBehaviour
     {
         dead = true;
         animator.SetBool("IsDead", true);
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 }

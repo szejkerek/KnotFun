@@ -4,8 +4,10 @@ using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
+    
     private EnemyState currentState;
     public NavMeshAgent NavMeshAgent {get; private set;}
+    public LayerMask GroundLayer;
     public EnemyAttackManager EnemyAttackManager {get; private set;}
 
     private void Awake()
