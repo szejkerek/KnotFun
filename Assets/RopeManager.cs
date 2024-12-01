@@ -14,6 +14,7 @@ public class RopeManager : MonoBehaviour
     public float currentPullDistance;
 
     public Material ropeMaterial;
+    public GameObject locker;
 
     public void SetRopeMaterial()
     {
@@ -27,6 +28,9 @@ public class RopeManager : MonoBehaviour
         RopeMesh ropeMesh = GetComponent<RopeMesh>();
         
         ropeMesh.material = material;
+
+        locker.GetComponent<MeshRenderer>().material = material;
+
         ropeMesh.Refresh();
     }
     
