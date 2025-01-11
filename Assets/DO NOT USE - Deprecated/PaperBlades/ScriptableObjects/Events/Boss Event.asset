@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c5a6d9108fd6c449073f7e410adb09, type: 3}
+  m_Name: Boss Event
+  m_EditorClassIdentifier: 
+  Header: Inked Capital
+  Content: 'As you reach the city you realise that the ink completely took over...
+    it''s too late...
+
+    ...
+
+    but it''s not to late to positively rate our
+    game!'
+  DisplayImage: {fileID: 21300000, guid: 80ef8c471fd83824c9e74c4a88b873e8, type: 3}
+  answerOne: Great
+  answerTwo: Fantastic
+  OnAccept:
+    AddMoney: 0
+    Money: 0
+    AddPassive: 0
+    passiveEffect: {fileID: 0}
+  OnDecline:
+    AddMoney: 0
+    Money: 0
+    AddPassive: 0
+    passiveEffect: {fileID: 0}

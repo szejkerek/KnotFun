@@ -1,0 +1,4 @@
+Key,English(en),Japanese (Japan)(ja-JP),Polish (Poland)(pl-PL),Spanish(es)
+"testKey","Hello there","Kon'nichiwa","Witaj","Hola"
+"textScore","Score: {0}","Sukoa: {0}","Wynik: {0}","Puntaje: {0}"
+"textButton","Increase Score","Sukoa o fuyasu","Zwiększ wynik","Aumentar puntuación"

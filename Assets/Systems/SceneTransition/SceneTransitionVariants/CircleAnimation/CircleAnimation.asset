@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5cb822a37f1e143b0a5c2cf3e1f89c, type: 3}
+  m_Name: CircleAnimation
+  m_EditorClassIdentifier: 
+  animationTime: 1
+  animator: {fileID: 2861393999705200920, guid: 3fd01dfb3af12d7419c3e27525c10922, type: 3}
+  objectsToAnimate: {fileID: 3805994173092039918, guid: 3fd01dfb3af12d7419c3e27525c10922, type: 3}
+  clipNameEnter: CircleAnimation_Enter
+  clipNameExit: CircleAnimation_Exit

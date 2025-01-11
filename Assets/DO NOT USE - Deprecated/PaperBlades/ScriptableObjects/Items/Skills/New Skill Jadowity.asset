@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b9486ad28ad314d8d9e3af6e5d2ee9, type: 3}
+  m_Name: New Skill Jadowity
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Acidic
+  <Icon>k__BackingField:
+    m_AssetGUID: 3c60ded90dc0d4941bd3cedbb69e496c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <GameSprite>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <MaxLevel>k__BackingField: 5
+  <Cost>k__BackingField: 20
+  Cooldown:
+    cooldowTime: 5
+  <NextItem>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <BaseStats>k__BackingField:
+    Damage: 10
+    MaxHealth: 10
+    Armor: 0
+    Speed: 0
+    CritChance: 0
+  <StatsModifiersPerLevel>k__BackingField:
+    Damage: 10
+    MaxHealth: 0
+    Armor: 0
+    Speed: 0
+    CritChance: 0
+  <Range>k__BackingField: 10
+  dmgPerTick: 22
+  ticks: 8

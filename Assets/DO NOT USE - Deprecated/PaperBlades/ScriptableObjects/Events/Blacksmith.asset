@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c5a6d9108fd6c449073f7e410adb09, type: 3}
+  m_Name: Blacksmith
+  m_EditorClassIdentifier: 
+  Header: Demon Forge
+  Content: 'After a glorious battle, you sail to the next island. Your eyes perceive
+    a forge on a piece of land, but not a normal one; this one is ruled by an evil
+    spirit, an Oni demon that exploits your curiosity.
+
+    "Want to be bigger? Want
+    to be stronger? Pay me gold, and you shall receive."
+
+    Will you give in to
+    his temptation or will you fight with your own strength?
+
+    (Pay 500g)'
+  DisplayImage: {fileID: 21300000, guid: 23c11cd9e67b35040942523fef94f301, type: 3}
+  answerOne: Yes
+  answerTwo: No
+  OnAccept:
+    AddMoney: 1
+    Money: -500
+    AddPassive: 1
+    passiveEffect: {fileID: 11400000, guid: e1c79e4c851260744b3dc976fb9745ed, type: 2}
+  OnDecline:
+    AddMoney: 0
+    Money: 0
+    AddPassive: 0
+    passiveEffect: {fileID: 0}

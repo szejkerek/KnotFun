@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd93b4b535de1f441b6204dddbbaa321, type: 3}
+  m_Name: PaperDamage 1
+  m_EditorClassIdentifier: 
+  <Clip>k__BackingField: {fileID: 8300000, guid: f2cdb46bf08c2204db35eaae424cac26, type: 3}
+  volume: 0.32
+  pitchVariation: 0.46
+  loop: 0
+  <Settings3D>k__BackingField:
+    spatialBlend: 0
+    minDistance: 1
+    maxDistance: 500

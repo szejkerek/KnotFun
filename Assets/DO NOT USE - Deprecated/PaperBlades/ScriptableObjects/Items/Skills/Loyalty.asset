@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054442d4e76482f4585402a2c9c036ae, type: 3}
+  m_Name: Loyalty
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Loyalty
+  <Icon>k__BackingField:
+    m_AssetGUID: 6bf59f1a54910b5478d20fc926a76bbe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <GameSprite>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <MaxLevel>k__BackingField: 1
+  <Cost>k__BackingField: 0
+  Cooldown:
+    cooldowTime: 5
+  <NextItem>k__BackingField:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <BaseStats>k__BackingField:
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
+    Speed: 0
+    CritChance: 0
+  <StatsModifiersPerLevel>k__BackingField:
+    Damage: 0
+    MaxHealth: 0
+    Armor: 0
+    Speed: 0
+    CritChance: 0
+  <Range>k__BackingField: 10
+  damage: 100

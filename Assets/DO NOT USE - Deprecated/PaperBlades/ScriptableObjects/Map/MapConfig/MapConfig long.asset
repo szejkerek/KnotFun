@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3870c95d514174492f28abaf9724ca, type: 3}
+  m_Name: MapConfig long
+  m_EditorClassIdentifier: 
+  mapGridWidth: 5
+  extraPaths: 1
+  numOfStartingNodes: 1
+  numOfPreBossNodes: 4
+  mapNodeTypes:
+  - {fileID: 11400000, guid: dbbcf0334dd1f9b47be1fc9c68e37918, type: 2}
+  - {fileID: 11400000, guid: a8f33092612e0e940980ac8d5c50e03d, type: 2}
+  - {fileID: 11400000, guid: 22ab717f77097aa458e1916a5825fa23, type: 2}
+  - {fileID: 11400000, guid: b3620257c3b74024e8c2213937aad01a, type: 2}
+  - {fileID: 11400000, guid: 7e16670bdfa329d4394951e2bceb7904, type: 2}
+  - {fileID: 11400000, guid: 496f974edd21929448adbe9b0cf1524f, type: 2}
+  - {fileID: 11400000, guid: 4c670f1448d9daa4fbec99360f6c6495, type: 2}
+  mapLayers:
+  - mapNodeTypesProbability:
+    - mapNodeType: 2
+      probability: 1
+  - mapNodeTypesProbability:
+    - mapNodeType: 0
+      probability: 0.8
+    - mapNodeType: 5
+      probability: 0.2
+  - mapNodeTypesProbability:
+    - mapNodeType: 0
+      probability: 1
+    - mapNodeType: 2
+      probability: 0.1
+    - mapNodeType: 0
+      probability: 0.1
+  - mapNodeTypesProbability:
+    - mapNodeType: 5
+      probability: 0.5
+    - mapNodeType: 4
+      probability: 0.5
+  - mapNodeTypesProbability:
+    - mapNodeType: 0
+      probability: 0.9
+    - mapNodeType: 4
+      probability: 0.1
+  - mapNodeTypesProbability:
+    - mapNodeType: 3
+      probability: 1
+    - mapNodeType: 2
+      probability: 0.1
+  - mapNodeTypesProbability:
+    - mapNodeType: 0
+      probability: 0.4
+    - mapNodeType: 1
+      probability: 0.3
+    - mapNodeType: 5
+      probability: 0.3
+  - mapNodeTypesProbability:
+    - mapNodeType: 2
+      probability: 1
+    - mapNodeType: 2
+      probability: 1
+  - mapNodeTypesProbability:
+    - mapNodeType: 6
+      probability: 1

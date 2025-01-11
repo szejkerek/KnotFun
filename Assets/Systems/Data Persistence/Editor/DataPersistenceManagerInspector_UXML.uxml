@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Systems/Data%20Persistence/Editor/DataPersistenceManagerInspector_USS.uss?fileID=7433441132597879392&amp;guid=9411f822ed9a1bd4db04b453dbc388b1&amp;type=3#DataPersistenceManagerInspector_USS" />
+    <ui:Label text="Save Data Options" name="infoLabel" style="margin-top: 10px; margin-bottom: 10px; -unity-font-style: bold; font-size: 14px;" />
+    <ui:Toggle label="Use Encription?   " binding-path="useEncription" name="useEncription" tooltip="Encrypt the file fith a specified word" value="false" enabled="true" class="custom-container custom-toggle" style="-unity-text-align: upper-left; -unity-paragraph-spacing: 0; word-spacing: 0; flex-direction: row; flex-wrap: wrap; flex-basis: auto; right: auto; visibility: visible;" />
+    <uie:PropertyField label="Encryption Key" binding-path="encryptionKey" name="encriptionKey" focusable="true" tooltip="Word used to encrypt the save file" class="property-fields" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+    <uie:PropertyField label="Filename" binding-path="filename" name="filename" focusable="true" tooltip="Name of the save file created in Application.persistentDataPath" class="property-fields" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+    <ui:Button text="Show Data in Explorer" name="showInExplorer" tooltip="Open the location of Application.persistentDataPath" class="button-show" />
+</ui:UXML>

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9f15c5cddeac1744b2b8eea824143e4, type: 3}
+  m_Name: SamuraiMaleVisuals
+  m_EditorClassIdentifier: 
+  <Helmet_B>k__BackingField:
+  - {fileID: 21300000, guid: 9b984b288ed05e44d84f78bc892c81a9, type: 3}
+  - {fileID: 21300000, guid: e47eece6bc3397f4ba0b405d29a958cc, type: 3}
+  - {fileID: 21300000, guid: 6678d1dfd8935dd4a84d620290230e66, type: 3}
+  - {fileID: 21300000, guid: f948f0b42a77897439db6324b038befb, type: 3}
+  <Helmet_F>k__BackingField:
+  - {fileID: 21300000, guid: fd02f51de6cc983408ec8fee4002d589, type: 3}
+  - {fileID: 21300000, guid: 91e02a8519ec2454ba35503bfeba5dc7, type: 3}
+  - {fileID: 21300000, guid: 291c48ca665a2a347ae48191aa326a15, type: 3}
+  - {fileID: 21300000, guid: f527777cd97824c42b61f8de2ad410ea, type: 3}
+  - {fileID: 21300000, guid: 2ddbc1117a1f82941b2b6e78a14529b1, type: 3}
+  - {fileID: 21300000, guid: 431784c3a5f2d57498bf7c9fb9e4fe30, type: 3}
+  <Face_F>k__BackingField:
+  - {fileID: 21300000, guid: 1272a43d764e9844ea63a819747328dd, type: 3}
+  - {fileID: 21300000, guid: 06e80fe57ad5ad84ab3c482270de3c3c, type: 3}
+  - {fileID: 21300000, guid: caf193aa208a05d47807454bd1ea2de6, type: 3}
+  - {fileID: 21300000, guid: 3980941b9e9f36d4e922d9e557d7159b, type: 3}
+  - {fileID: 21300000, guid: 78252d6eec6a51044a3dc83af2111de4, type: 3}
+  - {fileID: 21300000, guid: 6d698f65a68be7d49861b2bcb5855108, type: 3}
+  - {fileID: 21300000, guid: 1f4e5148ec037344fb8dea3733329dee, type: 3}
+  - {fileID: 21300000, guid: 3c1e2ced5dcce74449667a11e25f0069, type: 3}
+  - {fileID: 21300000, guid: 7ba450b542afb04468e9dced111bad35, type: 3}
+  - {fileID: 21300000, guid: b1c4bd3528c5cf64db2e03be80513971, type: 3}
+  <Head>k__BackingField:
+  - {fileID: 21300000, guid: 9deb089ebbc5d214894e048d0c872440, type: 3}
+  <Weapon>k__BackingField:
+  - {fileID: 21300000, guid: 6c876898c1384004e93201b101caf2f4, type: 3}
+  - {fileID: 21300000, guid: f070e1f85c9df9d48891b7376218d436, type: 3}
+  - {fileID: 21300000, guid: 8a46c5e627e8db543bdc690131f85752, type: 3}
+  - {fileID: 21300000, guid: 2c2e934021cfcca498b975e58079a11a, type: 3}
+  - {fileID: 21300000, guid: 4c365def9bafffd4d94f1588808881f0, type: 3}
+  <Chestplate>k__BackingField:
+  - {fileID: 21300000, guid: 6837144d2f51c3b4d9ec0bccc3f2f964, type: 3}
+  - {fileID: 21300000, guid: 04fbf8758faf6c5409d7b52ea9ea64eb, type: 3}
+  - {fileID: 21300000, guid: 4c6a7c6eb69682641933ca3a8b83ea72, type: 3}
+  <Pants>k__BackingField:
+  - {fileID: 21300000, guid: bd3bb5ad2a781cc4aae10d849cfeff06, type: 3}
+  - {fileID: 21300000, guid: 04687ae7fbf5ba146a5b352af33ecef6, type: 3}
+  - {fileID: 21300000, guid: f19094801a5d49d45b2a594307495f21, type: 3}

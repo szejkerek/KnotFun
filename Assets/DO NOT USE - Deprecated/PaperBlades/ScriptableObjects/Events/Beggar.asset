@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19c5a6d9108fd6c449073f7e410adb09, type: 3}
+  m_Name: Beggar
+  m_EditorClassIdentifier: 
+  Header: A poor man
+  Content: 'While traveling to your destination, you spot a strange old man sitting
+    on the edge of the island. A ronin,  samurai without a master, desperately trying
+    to escape hunger by eating a rotten fish.
+
+    Will you spare a coin for a poor
+    warrior or will you ignore his plight? (Give 100g)'
+  DisplayImage: {fileID: 21300000, guid: 275e59aab10495c458af1d9163c60d0c, type: 3}
+  answerOne: Yes
+  answerTwo: No
+  OnAccept:
+    AddMoney: 0
+    Money: -10
+    AddPassive: 0
+    passiveEffect: {fileID: 0}
+  OnDecline:
+    AddMoney: 0
+    Money: 0
+    AddPassive: 0
+    passiveEffect: {fileID: 0}
