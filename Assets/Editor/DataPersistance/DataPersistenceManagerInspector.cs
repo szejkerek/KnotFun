@@ -1,15 +1,14 @@
 using PlaceHolders.DataPersistence;
-using System.Diagnostics;
-using System.IO;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements; // Ensure this is included for VisualTreeAsset and VisualElement
+using UnityEngine.UIElements;
+
 
 namespace PlaceHolders
 {
   [CustomEditor(typeof(DataPersistenceManager), true)]
-  public class DataPersistenceManagerInspector : Editor
+  public class DataPersistenceManagerInspector : UnityEditor.Editor
   {
     //[SerializeField] //if not needed for editor purposes.
     private VisualTreeAsset VisualTree = null;
