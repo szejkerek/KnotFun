@@ -1,5 +1,4 @@
-﻿using GD.MinMaxSlider;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 namespace PlaceHolders.Audio

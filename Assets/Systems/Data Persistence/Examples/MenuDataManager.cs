@@ -1,9 +1,5 @@
 using PlaceHolders.Core;
-using System;
-using System.Collections.Generic;
-using UnityEditor.Graphs;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace PlaceHolders.DataPersistence
