@@ -46,7 +46,7 @@ jobs:
         with:
           script: |
             const artifactUrl = `https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
-            const message = `🎉 **Build Completed!** 🎉\n\n The latest build is ready:\n\n 🔗 **[Download Build](${artifactUrl})**`;
+            const message = `**Build Completed!** \n 🔗 [Download Build](${artifactUrl})`;
             const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
