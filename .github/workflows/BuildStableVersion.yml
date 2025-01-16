@@ -1,4 +1,4 @@
-name: Build Stable Version
+name: Actions 😎
 
 on:
   push:
@@ -7,12 +7,14 @@ on:
 
 jobs:
   build:
-    name: Build project for Windows
+    name: Build my project ✨
     runs-on: ubuntu-latest
     steps:
+      # Checkout
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Cache
       - uses: actions/cache@v3
         with:
           path: Library
@@ -20,6 +22,7 @@ jobs:
           restore-keys: |
             Library-
 
+      # Build
       - name: Build project
         uses: game-ci/unity-builder@v4
         env:
@@ -29,24 +32,53 @@ jobs:
         with:
           targetPlatform: StandaloneWindows64
 
+      # Output
       - uses: actions/upload-artifact@v3
         with:
           name: Build
           path: build
 
-  notify-discord:
-    name: Notify Discord
+  create-release:
+    name: Create Release
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Notify Discord with build link
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: "build-${{ github.run_id }}"
+          release_name: "Build - Run #${{ github.run_id }}"
+          body: "This release contains the latest build artifact for Windows."
+          draft: false
+          prerelease: false
+
+      - name: Upload Build to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: build
+          asset_name: Build-Windows.zip
+          asset_content_type: application/zip
+
+  notify-discord:
+    name: Notify Discord
+    runs-on: ubuntu-latest
+    needs: create-release
+    steps:
+      - name: Notify Discord with release link
         uses: actions/github-script@v6
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
           script: |
-            const artifactUrl = `https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
-            const message = `**Build Completed!** \n 🔗 [Download Build](${artifactUrl})`;
+            const repo = '${{ github.repository }}';
+            const tag = 'build-${{ github.run_id }}';
+            const releaseUrl = `https://github.com/${repo}/releases/tag/${tag}`;
+            const message = `**Build Released!** \n [Download Release](${releaseUrl})`;
             const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
