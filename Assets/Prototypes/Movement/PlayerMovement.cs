@@ -1,6 +1,8 @@
-﻿namespace PlaceHolders.Prototypes.Movement
+﻿using UnityEngine;
+
+namespace PlaceHolders.Prototypes.Movement
 {
-    public class PlayerMovement
+    public class PlayerMovement : MonoBehaviour
     {
         //Test
     }
