@@ -781,7 +781,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_sharedMaterial: {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -6153,7 +6154,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_sharedMaterial: {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -6395,7 +6397,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 1726709468}
   credits: {fileID: 541283949}
-  music: {fileID: 11400000, guid: 941411c4ed782ea428e2c4ac7f32e252, type: 2}
 --- !u!4 &1867925613
 Transform:
   m_ObjectHideFlags: 0
@@ -6472,7 +6473,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_sharedMaterial: {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -2243684658899337429, guid: 549067ddcd4c47840ab2e9c6699230e8, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:

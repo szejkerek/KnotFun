@@ -852,6 +852,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 12.93154
       objectReference: {fileID: 0}
+    - target: {fileID: 2106145266610383287, guid: c29084f7f2c6f3f49904bb98e0ba2929, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 2559285840627121667, guid: c29084f7f2c6f3f49904bb98e0ba2929, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -26.349855
@@ -1251,12 +1255,6 @@ MonoBehaviour:
   length: 25
   shootingSpeedModifier: 0.75
   source: {fileID: 1942561665}
-  sounds:
-  - {fileID: 11400000, guid: a2a3ce1465254fc40ac444fa27a6dd70, type: 2}
-  - {fileID: 11400000, guid: d171ef348998b754ca6f11b0f4384f9d, type: 2}
-  audioManager: {fileID: 448722877}
-  audioSource: {fileID: 1903498586}
-  audioSourceWalk: {fileID: 0}
 --- !u!95 &1942561664
 Animator:
   serializedVersion: 7
