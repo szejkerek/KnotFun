@@ -2,11 +2,8 @@ using UnityEngine;
 
 public class NewMovement : MonoBehaviour
 {
+    public float speed = 10f; // Speed multiplier for movement
     private Rigidbody rb;
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private float frequency = 1f; // Frequency of the sinusoidal motion
-    [SerializeField] private float offset = 0f;   // Offset for the sinusoidal motion
-    [SerializeField] private float power = 50f;   // Offset for the sinusoidal motion
 
     private void Start()
     {
@@ -15,13 +12,14 @@ public class NewMovement : MonoBehaviour
 
     private void Update()
     {
-        // Calculate forward and backward movement using sine wave
-        float forwardMovement = Mathf.Sin(Time.time * frequency + offset);
+        // Get input from WASD keys or Arrow keys
+        float moveHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right
+        float moveVertical = Input.GetAxis("Vertical");     // W/S or Up/Down
 
-        // Set movement direction to sinusoidal forward/backward
-        Vector3 movementDir = new Vector3(0, 0, forwardMovement);
+        // Calculate the direction based on input
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        // Apply force to the rigidbody
-        rb.AddForce(movementDir.normalized * Time.deltaTime * speed * power);
+        // Apply force to the Rigidbody
+        rb.AddForce(movement * speed * Time.deltaTime);
     }
 }

@@ -156,6 +156,6 @@ MonoBehaviour:
   leftObject: {fileID: 0}
   rightObject: {fileID: 0}
   numberOfSegments: 30
-  elasticity: 500
+  elasticity: 50
   segmentLength: 0.05
-  segmentMaxLenght: 0
+  segmentMaxLenght: 0.8

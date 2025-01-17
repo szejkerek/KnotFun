@@ -1,24 +1,23 @@
 using System;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 
 public class RopeJunction : MonoBehaviour
 {
-    [SerializeField]
     private RopeJunction leftNeighbour, rightNeighbour;
-    [SerializeField]
-    private float elasticity, lenght, maxLength;
-    public Rigidbody rb;
+    private float elasticity, lenght, forceRelaxation;
+    Rigidbody rb;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void SetParameters(float elasticity, float length, float maxLength)
+    public void SetParameters(float elasticity, float length, float forceRelaxation)
     {
         this.elasticity = elasticity;
         this.lenght = length;
-        this.maxLength = maxLength;
+        this.forceRelaxation = forceRelaxation;
     }
 
     public void SetNeighbours(RopeJunction leftNeighbour, RopeJunction rightNeighbour)
@@ -29,28 +28,56 @@ public class RopeJunction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PullTogether(leftNeighbour);
-        PullTogether(rightNeighbour);
+        if (rightNeighbour != null)
+        {
+            PassForce(CalculateForce(rightNeighbour).magnitude, isRight: true);
+        }
+        if (leftNeighbour != null)
+        {
+            PassForce(CalculateForce(leftNeighbour).magnitude, isRight: false);
+        }
     }
 
-    private void PullTogether(RopeJunction neighbour)
+    private Vector3 CalculateForce(RopeJunction neighbour)
     {
-        if (neighbour == null) return;
-        float distance = Vector3.Distance(transform.position, neighbour.transform.position);
+        if (neighbour == null) 
+            return Vector3.zero;
 
-        if (distance > maxLength)
-        {
-            Vector3 force = (neighbour.transform.position - transform.position).normalized * (Time.deltaTime * elasticity * 10 * distance);
-            rb.AddForce(force);
-            neighbour.rb.AddForce(-force);
-        }
+        Vector3 direction = neighbour.transform.position - transform.position;
+        float distance = direction.magnitude;
+
+        if (distance <= lenght)
+            return Vector3.zero;
+
+        // Correct position to enforce the maximum length constraint
+        Vector3 correction = direction.normalized * (distance - lenght);
+        Vector3 force = correction * elasticity;
         
-        else if (distance > lenght)
-        {
-            Vector3 force = (neighbour.transform.position - transform.position).normalized * (Time.deltaTime * elasticity * distance);
-            rb.AddForce(force);
-            neighbour.rb.AddForce(-force);
-        }
+
+        return force;
     }
 
+    public void PassForce(float force, bool isRight)
+    {
+        if (isRight)
+        {
+            if (rightNeighbour == null || force <= 0.1f)
+                return;
+            
+            Vector3 direction = (rightNeighbour.transform.position - transform.position).normalized;
+            rightNeighbour.rb.AddForce(direction * (-force));
+            rightNeighbour.PassForce(force*forceRelaxation, isRight:true);
+        }
+        else
+        {
+            if (leftNeighbour == null || force <= 0.1f)
+                return;
+            
+            Vector3 direction = (leftNeighbour.transform.position - transform.position).normalized;
+            leftNeighbour.rb.AddForce(direction * (-force));
+            leftNeighbour.PassForce(force*forceRelaxation, isRight:false);
+        }
+    }
+    
+    
 }
