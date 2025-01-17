@@ -1,23 +1,23 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class RopeGenerative : MonoBehaviour
 {
-    [SerializeField]
-    GameObject segment;
-    [SerializeField]
-    Rigidbody leftObject, rightObject;
-    [SerializeField]
-    uint numberOfSegments;
-    [SerializeField]
-    float elasticity, segmentLength, segmentMaxLengt;
-    public List<RopeJunction> ropeJunctions = new List<RopeJunction>();
-    [SerializeField]
-    bool shouldUpdate = false;
+    
+    [SerializeField] RopeJunction segment;
+    [SerializeField] Rigidbody leftObject, rightObject;
+    [SerializeField] int numberOfSegments;
+    
+    [Header("Rope Parameters")]
+    [SerializeField] float elasticity;
+    [SerializeField] float segmentLength;
+    [SerializeField] float segmentMaxLenght;
 
+    List<RopeJunction> ropeJunctions = new();
     LineRenderer lineRenderer;
+    
 
     void Start()
     {
@@ -30,18 +30,17 @@ public class RopeGenerative : MonoBehaviour
         RopeJunction leftJunction = leftObject.AddComponent<RopeJunction>();
         RopeJunction rightJunction = rightObject.AddComponent<RopeJunction>();
 
-        leftJunction.Initialize(elasticity, segmentLength, segmentMaxLengt);
-        rightJunction.Initialize(elasticity, segmentLength, segmentMaxLengt);
+        leftJunction.SetParameters(elasticity, segmentLength, segmentMaxLenght);
+        rightJunction.SetParameters(elasticity, segmentLength, segmentMaxLenght);
 
 
         ropeJunctions.Add(leftJunction);
         for (int i = 0; i < numberOfSegments; i++)
         {
-            GameObject newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
-            newJunction.name = "Rope junction " + i.ToString();
-            RopeJunction junction = newJunction.GetComponent<RopeJunction>();
-            junction.Initialize(elasticity, segmentLength, segmentMaxLengt);
-            ropeJunctions.Add(junction);
+            RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
+            newJunction.name = $"Rope junction {i}";
+            newJunction.SetParameters(elasticity, segmentLength, segmentMaxLenght);
+            ropeJunctions.Add(newJunction);
         }
         ropeJunctions.Add(rightJunction);
 
@@ -59,9 +58,16 @@ public class RopeGenerative : MonoBehaviour
 
     }
 
+    private void OnValidate()
+    {
+        foreach(RopeJunction j in ropeJunctions)
+        {
+            j.SetParameters(elasticity, segmentLength, segmentMaxLenght);
+        }
+    }
+    
     private void FixedUpdate()
     {
-        if (shouldUpdate) UpdateParameters();
         List<Vector3> junctionPositions = new List<Vector3>();
         foreach (RopeJunction j in ropeJunctions)
         {
@@ -70,14 +76,5 @@ public class RopeGenerative : MonoBehaviour
 
         lineRenderer.positionCount = ropeJunctions.Count;
         lineRenderer.SetPositions(junctionPositions.ToArray());
-    }
-
-    private void UpdateParameters()
-    {
-        shouldUpdate = false;
-        foreach(RopeJunction j in ropeJunctions)
-        {
-            j.Initialize(elasticity, segmentLength, segmentMaxLengt);
-        }
     }
 }
