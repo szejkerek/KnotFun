@@ -19,7 +19,6 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
       - name: Build project
         uses: game-ci/unity-builder@v4
         env:
