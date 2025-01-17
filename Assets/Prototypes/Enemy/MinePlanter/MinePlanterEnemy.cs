@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using System;
+
 using UnityEngine.Timeline;
 using UnityEngine.UIElements;
 
@@ -44,6 +44,7 @@ namespace PlaceHolders
 
         private IEnumerator PlantBomb()
         {
+
             Debug.Log("Planting");
             yield return new WaitForSeconds(bombPlantTime);
             Instantiate(bomb, floorSensor.transform.position, transform.rotation);
@@ -64,10 +65,13 @@ namespace PlaceHolders
             Debug.Log("Jumping");
             Vector3 jumpDirection = player.position - rb.position;
 
+            float xBias = Random.Range(-bias, bias);
+            float zBias = Random.Range(-bias, bias);
+
             if (jumpDirection.magnitude < minDistance){
                 jumpDirection = - jumpDirection;
             }
-            jumpDirection = jumpDirection.normalized;
+            jumpDirection = (jumpDirection).normalized + xBias * Vector3.right + zBias * Vector3.forward;
             jumpDirection += Vector3.up * jumpHeight;
             jumpDirection = jumpDirection.normalized * jumpForce;
 
