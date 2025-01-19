@@ -11,6 +11,12 @@ namespace PlaceHolders
 
         private void Start()
         {
+            if (!Application.isEditor)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            
             if (cinemachineCam == null)
             {
                 Debug.LogError("CinemachineVirtualCamera is not assigned.");

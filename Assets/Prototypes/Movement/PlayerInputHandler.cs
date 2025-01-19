@@ -25,6 +25,14 @@ namespace PlaceHolders.Prototypes.Movement
                 Debug.LogWarning($"No PlayerMovement found for PlayerIndex: {playerInput.playerIndex}");
             }
         }
+        
+        public void OnLook(InputAction.CallbackContext context)
+        {
+            if (playerMovement == null)
+                return;
+            
+            playerMovement.SetLookVector(context.ReadValue<Vector2>());
+        }
 
         public void OnMove(InputAction.CallbackContext context)
         {
