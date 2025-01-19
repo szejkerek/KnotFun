@@ -78,6 +78,7 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+  m_ScrollDeltaPerTick: 6
 --- !u!1 &4293717538493905471
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,13 +719,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2332141584112876078, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9148031497662321994, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4726666575343673715}
   m_SourcePrefab: {fileID: 100100000, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
+--- !u!1 &1002834694291009845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9148031497662321994, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
+  m_PrefabInstance: {fileID: 8295242362886055039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4726666575343673715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002834694291009845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28083329717e64943824a7f1bc19f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSettings:
+    AudioMuted: 0
+    MusicMuted: 0
+    SfxVolume: 1
+    MusicVolume: 1
+  sfxSource: {fileID: 8830257861999111847}
+  musicSource: {fileID: 1929419859506024781}
+  musicFadeInTime: 8
+  musicFadeOutTime: 4
+--- !u!82 &1929419859506024781 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7626902977561277746, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
+  m_PrefabInstance: {fileID: 8295242362886055039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6457205208423104142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3063018489720871665, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
+  m_PrefabInstance: {fileID: 8295242362886055039}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8830257861999111847 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 690737699809053400, guid: d76a4187c78167d44b25eb3dc4ac25c5, type: 3}
   m_PrefabInstance: {fileID: 8295242362886055039}
   m_PrefabAsset: {fileID: 0}
