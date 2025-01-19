@@ -7,7 +7,7 @@ public struct RopeParams
     [Range(0.01f,1f)] public float forceRelaxation;
     public float shortestRope;
     public float forceToPerfectCenter;
-    [FormerlySerializedAs("minForcePassed")] public float minForce;
+    public float minForce;
     public float maxForcePassed;
     public float elasticity;
     public float dampingForce;
@@ -70,8 +70,7 @@ public class RopeJunction : MonoBehaviour
 
         if (distance <= ropeParams.segmentLength)
             return Vector3.zero;
-
-        // Correct position to maintain the maximum length constraint
+        
         Vector3 correction = direction.normalized * (distance - ropeParams.segmentLength);
         return correction * ropeParams.elasticity;
     }
@@ -85,17 +84,14 @@ public class RopeJunction : MonoBehaviour
 
         Vector3 direction = (neighbour.transform.position - transform.position).normalized;
         float distanceToNeighbour = Vector3.Distance(transform.position, neighbour.transform.position);
-
-        // Check if the distance exceeds the threshold
+        
         if (distanceToNeighbour > ropeParams.segmentLength)
         {
-            // Increase the force proportionally to the distance exceeded
             float excessDistance = distanceToNeighbour - ropeParams.segmentLength;
-            force += excessDistance * ropeParams.forceScalingFactor; // Scale the force based on excess distance
+            force += excessDistance * ropeParams.forceScalingFactor;
         }
 
         force = ApplyForce(force, neighbour, direction);
-
         neighbour.PassForce(force * ropeParams.forceRelaxation, isRight);
     }
 
@@ -113,8 +109,6 @@ public class RopeJunction : MonoBehaviour
         return force;
     }
 
-
-
     private void ApplyDamping()
     {
         Vector3 dampingForce = -rb.linearVelocity * ropeParams.dampingForce;
@@ -125,19 +119,15 @@ public class RopeJunction : MonoBehaviour
     {
         if (rb == null) return;
 
-        // Visualize the force applied to this junction
         float forceMagnitude = rb.linearVelocity.magnitude;
-
-        // Map force magnitude to a gradient from red (low) to green (high)
-        Color forceColor = Color.Lerp(Color.green, Color.red, Mathf.Clamp01(forceMagnitude / 10f)); // Adjust max force (10f) as needed
+        
+        Color forceColor = Color.Lerp(Color.green, Color.red, Mathf.Clamp01(forceMagnitude / 10f));
         Gizmos.color = forceColor;
-
-        // Draw a sphere at the junction to represent the force visually
+        
         Gizmos.DrawSphere(transform.position, 0.05f);
-
-        // Draw a line representing the velocity vector
-        Vector3 velocityDirection = rb.linearVelocity.normalized; // Normalized direction of velocity
-        Vector3 velocityEndPoint = transform.position + velocityDirection * Mathf.Clamp(forceMagnitude, 0f, 10f); // Adjust max length as needed
+        
+        Vector3 velocityDirection = rb.linearVelocity.normalized;
+        Vector3 velocityEndPoint = transform.position + velocityDirection * Mathf.Clamp(forceMagnitude, 0f, 10f);
         Gizmos.DrawLine(transform.position, velocityEndPoint);
 
         Gizmos.color = Color.white;
@@ -151,8 +141,5 @@ public class RopeJunction : MonoBehaviour
         Vector3 direction = (rightPlayer.position - leftPlayer.position).normalized;
         return leftPlayer.position + direction * segmentFraction * Vector3.Distance(leftPlayer.position, rightPlayer.position);
     }
-
-
-
 
 }

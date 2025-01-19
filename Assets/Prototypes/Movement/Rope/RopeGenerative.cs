@@ -28,19 +28,29 @@ public class RopeGenerative : MonoBehaviour
         RopeJunction leftJunction = leftObject.AddComponent<RopeJunction>();
         RopeJunction rightJunction = rightObject.AddComponent<RopeJunction>();
 
-        leftJunction.SetParameters(0, numberOfSegments,leftObject.transform, rightObject.transform, ropeParams);
-        rightJunction.SetParameters(numberOfSegments - 1,numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
+
+        leftJunction.SetParameters(1, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
+        rightJunction.SetParameters(numberOfSegments - 2, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
 
 
-        ropeJunctions.Add(leftJunction);
-        for (int i = 1; i < numberOfSegments-1; i++)
+        for (int i = 0; i < numberOfSegments; i++)
         {
-            RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
-            newJunction.name = $"Rope junction {i}";
-            newJunction.SetParameters(i, numberOfSegments,leftObject.transform, rightObject.transform, ropeParams);
-            ropeJunctions.Add(newJunction);
+            if (i == 1) 
+            {
+                ropeJunctions.Add(leftJunction);
+            }
+            else if (i == numberOfSegments - 2)
+            {
+                ropeJunctions.Add(rightJunction);
+            }
+            else
+            {
+                RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
+                newJunction.name = $"Rope junction {i}";
+                newJunction.SetParameters(i, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
+                ropeJunctions.Add(newJunction);
+            }
         }
-        ropeJunctions.Add(rightJunction);
 
         for (int i = 0; i < ropeJunctions.Count; i++)
         {
