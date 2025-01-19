@@ -4,7 +4,7 @@ namespace PlaceHolders.Prototypes.Movement
 {
     public class PlayerCameraCenter : MonoBehaviour
     {
-        private PlayerMovement[] players;
+        private PlayerOrientation[] players;
         private GameObject[] orientations;
 
         [SerializeField, Range(0f, 1f)] private float positionLerpFactor = 0.1f;
@@ -12,7 +12,7 @@ namespace PlaceHolders.Prototypes.Movement
 
         private void Awake()
         {
-            players = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.None);
+            players = FindObjectsByType<PlayerOrientation>(FindObjectsSortMode.None);
             orientations = new GameObject[players.Length];
             for (int i = 0; i < players.Length; i++)
             {

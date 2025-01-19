@@ -8,6 +8,7 @@ namespace PlaceHolders.Prototypes.Movement
     {
         PlayerInput playerInput;
         PlayerMovement playerMovement;
+        PlayerOrientation playerOrientation;
 
         void Awake()
         {
@@ -18,6 +19,8 @@ namespace PlaceHolders.Prototypes.Movement
                 PlayerMovement[] movements = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.None);
                 playerMovement = System.Array.Find(movements,
                     movement => movement.GetPlayerIndex() == playerInput.playerIndex);
+
+                playerOrientation = playerMovement.PlayerOrientation;
             }
 
             if (playerMovement == null)
@@ -28,10 +31,10 @@ namespace PlaceHolders.Prototypes.Movement
         
         public void OnLook(InputAction.CallbackContext context)
         {
-            if (playerMovement == null)
+            if (playerOrientation == null)
                 return;
             
-            playerMovement.SetLookVector(context.ReadValue<Vector2>());
+            playerOrientation.SetLookVector(context.ReadValue<Vector2>());
         }
 
         public void OnMove(InputAction.CallbackContext context)

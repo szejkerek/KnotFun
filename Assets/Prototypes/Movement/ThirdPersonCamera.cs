@@ -28,14 +28,11 @@ namespace PlaceHolders
         {
             if (orientation != null && target != null && cinemachineCam != null)
             {
-                // Rotate the Cinemachine camera towards the orientation
                 cinemachineCam.transform.rotation = Quaternion.Lerp(
                     cinemachineCam.transform.rotation,
                     orientation.rotation,
-                    Time.deltaTime * 5f // Adjust smoothing factor as needed
+                    Time.deltaTime * 5f
                 );
-
-                // Make the camera look at the target
                 cinemachineCam.LookAt = target;
             }
         }
