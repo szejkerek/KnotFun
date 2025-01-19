@@ -11,9 +11,7 @@ public class RopeGenerative : MonoBehaviour
     [SerializeField] int numberOfSegments;
     
     [Header("Rope Parameters")]
-    [SerializeField, Range(0.01f,1f)] float forceRelaxation;
-    [SerializeField] float elasticity;
-    [SerializeField] float segmentLength;
+    [SerializeField] RopeParams ropeParams;
 
     List<RopeJunction> ropeJunctions = new();
     LineRenderer lineRenderer;
@@ -30,19 +28,29 @@ public class RopeGenerative : MonoBehaviour
         RopeJunction leftJunction = leftObject.AddComponent<RopeJunction>();
         RopeJunction rightJunction = rightObject.AddComponent<RopeJunction>();
 
-        leftJunction.SetParameters(elasticity, segmentLength, forceRelaxation);
-        rightJunction.SetParameters(elasticity, segmentLength, forceRelaxation);
+
+        leftJunction.SetParameters(1, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
+        rightJunction.SetParameters(numberOfSegments - 2, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
 
 
-        ropeJunctions.Add(leftJunction);
         for (int i = 0; i < numberOfSegments; i++)
         {
-            RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
-            newJunction.name = $"Rope junction {i}";
-            newJunction.SetParameters(elasticity, segmentLength, forceRelaxation);
-            ropeJunctions.Add(newJunction);
+            if (i == 1) 
+            {
+                ropeJunctions.Add(leftJunction);
+            }
+            else if (i == numberOfSegments - 2)
+            {
+                ropeJunctions.Add(rightJunction);
+            }
+            else
+            {
+                RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
+                newJunction.name = $"Rope junction {i}";
+                newJunction.SetParameters(i, numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
+                ropeJunctions.Add(newJunction);
+            }
         }
-        ropeJunctions.Add(rightJunction);
 
         for (int i = 0; i < ropeJunctions.Count; i++)
         {
@@ -60,10 +68,11 @@ public class RopeGenerative : MonoBehaviour
 
     private void OnValidate()
     {
-        foreach(RopeJunction j in ropeJunctions)
+        for (int i = 0; i < ropeJunctions.Count; i++)
         {
-            j.SetParameters(elasticity, segmentLength, forceRelaxation);
+            ropeJunctions[i].SetParameters(i,numberOfSegments,leftObject.transform, rightObject.transform,ropeParams);
         }
+
     }
     
     private void FixedUpdate()
