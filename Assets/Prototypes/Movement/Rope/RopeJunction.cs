@@ -12,6 +12,7 @@ public struct RopeParams
     public float elasticity;
     public float dampingForce;
     public float segmentLength;
+    public float forceScalingFactor;
 }
 public class RopeJunction : MonoBehaviour
 {
@@ -83,7 +84,16 @@ public class RopeJunction : MonoBehaviour
         if (neighbour == null) return;
 
         Vector3 direction = (neighbour.transform.position - transform.position).normalized;
-        
+        float distanceToNeighbour = Vector3.Distance(transform.position, neighbour.transform.position);
+
+        // Check if the distance exceeds the threshold
+        if (distanceToNeighbour > ropeParams.segmentLength)
+        {
+            // Increase the force proportionally to the distance exceeded
+            float excessDistance = distanceToNeighbour - ropeParams.segmentLength;
+            force += excessDistance * ropeParams.forceScalingFactor; // Scale the force based on excess distance
+        }
+
         force = ApplyForce(force, neighbour, direction);
 
         neighbour.PassForce(force * ropeParams.forceRelaxation, isRight);
@@ -93,15 +103,16 @@ public class RopeJunction : MonoBehaviour
     {
         force = Mathf.Clamp(force, ropeParams.minForce, ropeParams.maxForcePassed);
         force += Random.Range(-0.1f, 0.1f);
-        
-        neighbour.rb.AddForce(direction * (-force ));
+
+        neighbour.rb.AddForce(direction * (-force));
 
         Vector3 segmentPlacementPosition = CalculateSegmentPlacement();
         Vector3 segmentDirection = (segmentPlacementPosition - transform.position).normalized;
         neighbour.rb.AddForce(segmentDirection * (force * ropeParams.forceToPerfectCenter));
 
-        return force; 
+        return force;
     }
+
 
 
     private void ApplyDamping()
