@@ -6,6 +6,8 @@ namespace PlaceHolders.Prototypes.Movement
 {
     public class PlayerInputHandler : MonoBehaviour
     {
+        [SerializeField, Range(0.1f, 3f)] private float padDeadZone = 0.6f;
+        
         PlayerInput playerInput;
         PlayerMovement playerMovement;
         PlayerOrientation playerOrientation;
@@ -33,16 +35,26 @@ namespace PlaceHolders.Prototypes.Movement
         {
             if (playerOrientation == null)
                 return;
-            
-            playerOrientation.SetLookVector(context.ReadValue<Vector2>());
+
+            Vector2 input = context.ReadValue<Vector2>();
+
+            if (input.sqrMagnitude < padDeadZone * padDeadZone)
+                input = Vector2.zero;
+
+            playerOrientation.SetLookVector(input);
         }
 
         public void OnMove(InputAction.CallbackContext context)
         {
             if (playerMovement == null)
                 return;
-            
-            playerMovement.SetInputVector(context.ReadValue<Vector2>());
+
+            Vector2 input = context.ReadValue<Vector2>();
+
+            if (input.sqrMagnitude < padDeadZone * padDeadZone)
+                input = Vector2.zero;
+
+            playerMovement.SetInputVector(input);
         }
     }
 }

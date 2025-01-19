@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 49766478}
   - component: {fileID: 49766477}
   - component: {fileID: 49766476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1141,6 +1141,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4873511590260829452, guid: ad9c1caef5649c84cb18f2a1e7b1ac8b, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1464996405}
+    - target: {fileID: 4873511590260829452, guid: ad9c1caef5649c84cb18f2a1e7b1ac8b, type: 3}
+      propertyPath: speed
+      value: 7.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873511590260829452, guid: ad9c1caef5649c84cb18f2a1e7b1ac8b, type: 3}
+      propertyPath: groundDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873511590260829452, guid: ad9c1caef5649c84cb18f2a1e7b1ac8b, type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4873511590260829452, guid: ad9c1caef5649c84cb18f2a1e7b1ac8b, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1154,6 +1174,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175864595839906081, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 425322497}
+    - target: {fileID: 175864595839906081, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 175864595839906081, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: groundDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 175864595839906081, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: playerHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 175864595839906081, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4861633450678273137, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.057398
