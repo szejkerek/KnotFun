@@ -6,8 +6,8 @@ namespace PlaceHolders.Prototypes.Movement
 {
     public class PlayerInputHandler : MonoBehaviour
     {
-        private PlayerInput playerInput;
-        private PlayerMovement playerMovement;
+        PlayerInput playerInput;
+        PlayerMovement playerMovement;
 
         void Awake()
         {
@@ -15,8 +15,7 @@ namespace PlaceHolders.Prototypes.Movement
 
             if (playerInput != null)
             {
-                // Find the matching PlayerMovement instance based on playerIndex
-                PlayerMovement[] movements = FindObjectsOfType<PlayerMovement>();
+                PlayerMovement[] movements = FindObjectsByType<PlayerMovement>(FindObjectsSortMode.None);
                 playerMovement = System.Array.Find(movements,
                     movement => movement.GetPlayerIndex() == playerInput.playerIndex);
             }
@@ -29,10 +28,10 @@ namespace PlaceHolders.Prototypes.Movement
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            if (playerMovement != null)
-            {
-                playerMovement.SetInputVector(context.ReadValue<Vector2>());
-            }
+            if (playerMovement == null)
+                return;
+            
+            playerMovement.SetInputVector(context.ReadValue<Vector2>());
         }
     }
 }

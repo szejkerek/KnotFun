@@ -722,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   positionLerpFactor: 0.1
+  rotationLerpFactor: 0.005
 --- !u!1001 &7550741930159485831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -830,6 +831,10 @@ PrefabInstance:
     - target: {fileID: 6545515666131323343, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
       propertyPath: m_Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6545515666131323343, guid: 5ec9b36d72deb50459203fada0fd5b6f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
