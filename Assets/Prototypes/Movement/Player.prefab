@@ -76,7 +76,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: -1
-  speed: 3
+  rb: {fileID: 0}
+  speed: 12
+  groundDrag: 5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  playerHeight: 2
 --- !u!114 &8296350196645910519
 MonoBehaviour:
   m_ObjectHideFlags: 0

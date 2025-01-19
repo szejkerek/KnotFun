@@ -28,16 +28,16 @@ public class RopeGenerative : MonoBehaviour
         RopeJunction leftJunction = leftObject.AddComponent<RopeJunction>();
         RopeJunction rightJunction = rightObject.AddComponent<RopeJunction>();
 
-        leftJunction.SetParameters(ropeParams);
-        rightJunction.SetParameters(ropeParams);
+        leftJunction.SetParameters(0, numberOfSegments,leftObject.transform, rightObject.transform, ropeParams);
+        rightJunction.SetParameters(numberOfSegments - 1,numberOfSegments, leftObject.transform, rightObject.transform, ropeParams);
 
 
         ropeJunctions.Add(leftJunction);
-        for (int i = 0; i < numberOfSegments; i++)
+        for (int i = 1; i < numberOfSegments-1; i++)
         {
             RopeJunction newJunction = Instantiate(segment, startingPoint + placementDelta * (i + 1), transform.rotation, transform);
             newJunction.name = $"Rope junction {i}";
-            newJunction.SetParameters(ropeParams);
+            newJunction.SetParameters(i, numberOfSegments,leftObject.transform, rightObject.transform, ropeParams);
             ropeJunctions.Add(newJunction);
         }
         ropeJunctions.Add(rightJunction);
@@ -58,10 +58,11 @@ public class RopeGenerative : MonoBehaviour
 
     private void OnValidate()
     {
-        foreach(RopeJunction j in ropeJunctions)
+        for (int i = 0; i < ropeJunctions.Count; i++)
         {
-            j.SetParameters(ropeParams);
+            ropeJunctions[i].SetParameters(i,numberOfSegments,leftObject.transform, rightObject.transform,ropeParams);
         }
+
     }
     
     private void FixedUpdate()

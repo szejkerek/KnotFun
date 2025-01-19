@@ -43,6 +43,14 @@ namespace PlaceHolders.Prototypes.Movement
 
             playerOrientation.SetLookVector(input);
         }
+        
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (playerMovement == null)
+                return;
+
+            playerMovement.TryTriggerJump();
+        }
 
         public void OnMove(InputAction.CallbackContext context)
         {

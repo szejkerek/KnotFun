@@ -1,15 +1,23 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public struct RopeParams
 {
     [Range(0.01f,1f)] public float forceRelaxation;
+    public float shortestRope;
+    public float forceToPerfectCenter;
+    [FormerlySerializedAs("minForcePassed")] public float minForce;
+    public float maxForcePassed;
     public float elasticity;
     public float dampingForce;
     public float segmentLength;
 }
 public class RopeJunction : MonoBehaviour
 {
+    private int segmentIndex;
+    private int segmentCount;
+    private Transform leftPlayer, rightPlayer;
     private RopeJunction leftNeighbour, rightNeighbour;
     RopeParams ropeParams;
     private Rigidbody rb;
@@ -19,9 +27,13 @@ public class RopeJunction : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void SetParameters(RopeParams ropeParams)
+    public void SetParameters(int segmentIndex, int segmentCount, Transform leftPlayer, Transform rightPlayer,RopeParams ropeParams)
     {
         this.ropeParams = ropeParams;
+        this.leftPlayer = leftPlayer;
+        this.rightPlayer = rightPlayer;
+        this.segmentIndex = segmentIndex;
+        this.segmentCount = segmentCount;
     }
 
     public void SetNeighbours(RopeJunction leftNeighbour, RopeJunction rightNeighbour)
@@ -32,7 +44,7 @@ public class RopeJunction : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rightNeighbour != null)
+        if (rightNeighbour != null) 
         {
             float forceMagnitude = CalculateForce(rightNeighbour).magnitude;
             PassForce(forceMagnitude, isRight: true);
@@ -65,17 +77,32 @@ public class RopeJunction : MonoBehaviour
 
     public void PassForce(float force, bool isRight)
     {
-        if (force <= 0.1f) return;
+        if (force <= ropeParams.minForce) return;
 
         RopeJunction neighbour = isRight ? rightNeighbour : leftNeighbour;
         if (neighbour == null) return;
 
         Vector3 direction = (neighbour.transform.position - transform.position).normalized;
-        neighbour.rb.AddForce(direction * (-force));
+        
+        force = ApplyForce(force, neighbour, direction);
 
-        // Reduce the force using relaxation and pass it further
         neighbour.PassForce(force * ropeParams.forceRelaxation, isRight);
     }
+
+    private float ApplyForce(float force, RopeJunction neighbour, Vector3 direction)
+    {
+        force = Mathf.Clamp(force, ropeParams.minForce, ropeParams.maxForcePassed);
+        force += Random.Range(-0.1f, 0.1f);
+        
+        neighbour.rb.AddForce(direction * (-force ));
+
+        Vector3 segmentPlacementPosition = CalculateSegmentPlacement();
+        Vector3 segmentDirection = (segmentPlacementPosition - transform.position).normalized;
+        neighbour.rb.AddForce(segmentDirection * (force * ropeParams.forceToPerfectCenter));
+
+        return force; 
+    }
+
 
     private void ApplyDamping()
     {
@@ -85,8 +112,10 @@ public class RopeJunction : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Calculate the force magnitude applied to this junction
-        float forceMagnitude = rb != null ? rb.linearVelocity.magnitude : 0f;
+        if (rb == null) return;
+
+        // Visualize the force applied to this junction
+        float forceMagnitude = rb.linearVelocity.magnitude;
 
         // Map force magnitude to a gradient from red (low) to green (high)
         Color forceColor = Color.Lerp(Color.green, Color.red, Mathf.Clamp01(forceMagnitude / 10f)); // Adjust max force (10f) as needed
@@ -94,6 +123,25 @@ public class RopeJunction : MonoBehaviour
 
         // Draw a sphere at the junction to represent the force visually
         Gizmos.DrawSphere(transform.position, 0.05f);
+
+        // Draw a line representing the velocity vector
+        Vector3 velocityDirection = rb.linearVelocity.normalized; // Normalized direction of velocity
+        Vector3 velocityEndPoint = transform.position + velocityDirection * Mathf.Clamp(forceMagnitude, 0f, 10f); // Adjust max length as needed
+        Gizmos.DrawLine(transform.position, velocityEndPoint);
+
+        Gizmos.color = Color.white;
+        Vector3 segmentPlacement = CalculateSegmentPlacement();
+        Gizmos.DrawSphere(segmentPlacement, 0.04f); 
     }
+
+    private Vector3 CalculateSegmentPlacement()
+    {
+        float segmentFraction = (float)(segmentIndex + 1) / segmentCount;
+        Vector3 direction = (rightPlayer.position - leftPlayer.position).normalized;
+        return leftPlayer.position + direction * segmentFraction * Vector3.Distance(leftPlayer.position, rightPlayer.position);
+    }
+
+
+
 
 }
