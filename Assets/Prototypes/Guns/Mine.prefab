@@ -14956,7 +14956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4406749340675479487}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.24546592, y: -0, z: 0.000000037252907, w: 0.96940523}
+  m_LocalRotation: {x: -0.24546804, y: 0, z: 0, w: 0.9694047}
   m_LocalPosition: {x: 0, y: 0, z: 1.1199977}
   m_LocalScale: {x: 3.1060314, y: 2.8380165, z: 2.3491435}
   m_ConstrainProportionsScale: 0
@@ -14988,7 +14988,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1fdeac39b28b45742b821b6c8acff998, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18867,7 +18867,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 65
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
