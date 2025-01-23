@@ -3,12 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Enemy
+  - Blob
+  - BlueHit
+  - RedHit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Outline Obj
   - Water
   - UI
   - Ground
