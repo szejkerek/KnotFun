@@ -207,6 +207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: {fileID: 6884814901538384985}
+  playerModel: {fileID: 5927598574153142919}
+  rotationSpeed: 25
 --- !u!1 &5927598574153142919
 GameObject:
   m_ObjectHideFlags: 0
