@@ -737,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6312125696514370221, guid: 0dccef676558e52458e70e7130c86d2c, type: 3}
       propertyPath: ropeParams.dampingForce
-      value: 1.16
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 6312125696514370221, guid: 0dccef676558e52458e70e7130c86d2c, type: 3}
       propertyPath: ropeParams.shortestRope
@@ -765,7 +765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6312125696514370221, guid: 0dccef676558e52458e70e7130c86d2c, type: 3}
       propertyPath: ropeParams.forceToPerfectCenter
-      value: 0.09
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6312125696514370221, guid: 0dccef676558e52458e70e7130c86d2c, type: 3}
       propertyPath: ropeParams.segmentLenghtRatioToScale
