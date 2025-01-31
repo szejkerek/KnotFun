@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Systems/Data Persistence/Examples/DataPersistentTest1.unity
     guid: 7566e83c4a82a6b48b8038b68731b096
   - enabled: 1
-    path: Assets/Prototypes/Movement/MovementPrototype.unity
+    path: Assets/Prototypes/MovementWIthGuns/MovementPrototype.unity
     guid: e4cea3b476c718b4a9acfc212940bf2b
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 63d3715eac7096441b85cda898a17cb4, type: 2}
