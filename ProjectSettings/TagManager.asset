@@ -4,19 +4,16 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - FxTemporaire
   - Enemy
-  - Blob
-  - BlueHit
-  - RedHit
-  - Destination
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Outline Obj
+  - 
   - Water
   - UI
-  - Ground
+  - Enemies
   - 
   - 
   - 
