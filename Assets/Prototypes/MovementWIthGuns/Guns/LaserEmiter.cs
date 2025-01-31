@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlaceHolders
 {
-    public class LaserEmiter : MonoBehaviour
+    public class LaserEmiter : MonoBehaviour, IGun
     {
         public ParticleSystem bulletParticleSystem;
 
@@ -44,5 +44,9 @@ namespace PlaceHolders
             }
         }
 
+        public void Use()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlaceHolders
 {
-    public class BulletEmiter : MonoBehaviour
+    public class BulletEmiter : MonoBehaviour, IGun
     {
         public ParticleSystem bulletParticleSystem;
 
@@ -12,15 +12,6 @@ namespace PlaceHolders
         void Start()
         {
             bulletParticleSystem = GetComponent<ParticleSystem>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                bulletParticleSystem.Play();
-            }
         }
 
         private void OnParticleCollision(GameObject other)
@@ -32,5 +23,9 @@ namespace PlaceHolders
             }
         }
 
+        public void Use()
+        {
+            bulletParticleSystem.Play();
+        }
     }
 }
