@@ -171,9 +171,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
-    - target: {fileID: 8381892056112122641, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 6070855805178590193, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
+      propertyPath: intEventListener
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544080898151437949, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
+      propertyPath: progressImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544080898151437949, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
+      propertyPath: progressCanvas
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544080898151437949, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
+      propertyPath: transitionCanvas
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544080898151437949, guid: bb1bade6fe0e5c040900b2f5655f1e08, type: 3}
+      propertyPath: ProgressEventListener
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
