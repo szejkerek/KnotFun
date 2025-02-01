@@ -4,7 +4,7 @@ using static UnityEngine.ParticleSystem;
 
 namespace PlaceHolders
 {
-    public class GranadeEmiter : MonoBehaviour
+    public class GranadeEmiter : MonoBehaviour, IGun
     {
         public ParticleSystem bulletParticleSystem;
         public LayerMask collisionLayerMask;
@@ -16,15 +16,6 @@ namespace PlaceHolders
         void Start()
         {
             bulletParticleSystem = GetComponent<ParticleSystem>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                bulletParticleSystem.Play();
-            }
         }
 
         private void OnParticleCollision(GameObject other)
@@ -52,6 +43,11 @@ namespace PlaceHolders
             if(collisionEvents.Count == 0) return;
             Gizmos.color = gizmoColor;
             Gizmos.DrawSphere(collisionEvents[0].intersection, sphereRadius);
+        }
+
+        public void Use()
+        {
+            bulletParticleSystem.Play();
         }
     }
 }

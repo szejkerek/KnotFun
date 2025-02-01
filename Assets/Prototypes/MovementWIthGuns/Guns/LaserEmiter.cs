@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PlaceHolders
 {
-    public class LaserEmiter : MonoBehaviour
+    public class LaserEmiter : MonoBehaviour, IGun
     {
         public ParticleSystem bulletParticleSystem;
 
@@ -16,25 +16,6 @@ namespace PlaceHolders
             bulletParticleSystem = GetComponent<ParticleSystem>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                if (!isShooting)
-                {
-                    bulletParticleSystem.Play();
-                    isShooting = true;
-                }
-            }
-            else
-            {
-                bulletParticleSystem.Stop();
-                isShooting = false;
-            }
-
-        }
-
         private void OnParticleCollision(GameObject other)
         {
             int events = bulletParticleSystem.GetCollisionEvents(other, collisionEvents);
@@ -44,5 +25,9 @@ namespace PlaceHolders
             }
         }
 
+        public void Use()
+        {
+            bulletParticleSystem.Play();
+        }
     }
 }
